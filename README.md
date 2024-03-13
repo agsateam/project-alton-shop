@@ -1,3 +1,14 @@
+# Alton Online Shop
+
+Website toko online untuk penjualan Alton
+
+## Tech Requirement
+
+-   Laravel 11
+-   Livewire 3
+-   MySql 8
+-   Composer 2.7
+
 ## Development
 
 1 - Clone the project
