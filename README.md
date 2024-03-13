@@ -23,10 +23,11 @@ Website toko online untuk penjualan Alton
   cd project-alton
 ```
 
-3 - Install dependencies
+3 - Install dependencies, saranku pakai "pnpm" :)
 
 ```bash
   composer install
+  npm install  /  pnpm install
 ```
 
 4 - Generate Artisan Key
@@ -47,4 +48,5 @@ Website toko online untuk penjualan Alton
 
 ```bash
   php artisan serve
+  pnpm dev  /  npm run dev
 ```
