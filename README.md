@@ -4,9 +4,10 @@ Website toko online untuk penjualan Alton
 
 ## Tech Requirement
 
+-   PHP 8.2
+-   MySQL 8
 -   Laravel 11
 -   Livewire 3
--   MySql 8
 -   Composer 2.7
 
 ## Development
@@ -14,39 +15,43 @@ Website toko online untuk penjualan Alton
 1 - Clone the project
 
 ```bash
-  git clone https://github.com/agsateam/project-alton-shop.git
+git clone https://github.com/agsateam/project-alton-shop.git
 ```
 
 2 - Go to the project directory
 
 ```bash
-  cd project-alton
+cd project-alton-shop
 ```
 
 3 - Install dependencies, saranku pakai "pnpm" :)
 
 ```bash
-  composer install
-  npm install  /  pnpm install
+composer install
+npm install  /  pnpm install
 ```
 
-4 - Generate Artisan Key
+4 - Copy .env file
 
 ```bash
-  php artisan key:generate
+cp .env.example .env
 ```
 
-5 - Create Database & Run Migration
+5 - Generate Artisan Key
 
 ```bash
-  buat database dengan nama "alton" kemudian run:
-
-  php artisan migrate
+php artisan key:generate
 ```
 
-6 - Run Server
+6 - Create Database & Run Migration, buat database dengan nama "alton" kemudian run :
 
 ```bash
-  php artisan serve
-  pnpm dev  /  npm run dev
+php artisan migrate
+```
+
+7 - Run Server
+
+```bash
+php artisan serve
+pnpm dev  /  npm run dev
 ```
