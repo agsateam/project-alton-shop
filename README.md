@@ -24,10 +24,11 @@ git clone https://github.com/agsateam/project-alton-shop.git
 cd project-alton-shop
 ```
 
-3 - Install dependencies
+3 - Install dependencies, saranku pakai "pnpm" :)
 
 ```bash
 composer install
+npm install  /  pnpm install
 ```
 
 4 - Copy .env file
@@ -52,4 +53,5 @@ php artisan migrate
 
 ```bash
 php artisan serve
+pnpm dev  /  npm run dev
 ```
