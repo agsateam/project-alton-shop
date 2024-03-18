@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class WebConfigSeeder extends Seeder
 {
@@ -12,6 +13,8 @@ class WebConfigSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('web_configs')->insert([
+            'theme' => "#9A3B3B",
+        ]);
     }
 }

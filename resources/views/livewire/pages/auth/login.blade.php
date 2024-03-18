@@ -64,12 +64,12 @@ new #[Layout('layouts.guest')] class extends Component
             @endif
         </div>
 
-        <button type="submit" class="btn btn-block my-5 bg-[#9A3B3B] hover:bg-[#5f2323] text-white border-0">
+        <button type="submit" class="btn btn-block my-5 bg-primary hover:bg-secondary text-white border-0">
             {{-- <span class="loading loading-spinner"></span> --}}
             Log In
         </button>
     </form>
     <div class="text-center">
-        Belum punya akun? <a href="register" class="text-[#9A3B3B] font-bold hover:text-black" wire:navigate>Daftar</a>
+        Belum punya akun? <a href="register" class="text-primary font-bold hover:text-black" wire:navigate>Daftar</a>
     </div>
 </div>

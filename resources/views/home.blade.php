@@ -14,9 +14,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>
-    <body class="antialiased font-sans">
+    <body data-theme="{{ $theme }}" class="antialiased font-sans">
         <header class="sticky top-0 z-50">
-            <x-home.navbar/>
+            <x-home.navbar theme="{{ $theme }}"/>
         </header>
 
         <main class="relative">

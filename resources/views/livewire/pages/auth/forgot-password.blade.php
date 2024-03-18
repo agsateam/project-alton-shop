@@ -52,7 +52,7 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <div class="flex mt-4">
-            <button type="submit" class="btn grow border-0 text-white bg-[#9A3B3B] hover:bg-[#5f2323]">
+            <button type="submit" class="btn grow border-0 text-white bg-primary hover:bg-secondary">
                 {{ __('Reset Password') }}
             </button>
             <a class="ml-2 btn grow border-0 text-white bg-gray-500" href="{{ url()->previous() }}" wire:navigate>

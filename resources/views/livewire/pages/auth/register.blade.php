@@ -70,14 +70,14 @@ new #[Layout('layouts.guest')] class extends Component
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <button type="submit" class="btn btn-block bg-[#9A3B3B] hover:bg-[#5f2323] text-white border-0">
+        <button type="submit" class="btn btn-block bg-primary hover:bg-secondary text-white border-0">
             {{ __('Register') }}
         </button>
     </form>
 
     <div class="text-center mt-5">
         Sudah punya akun?
-        <a class="text-[#9A3B3B] hover:text-black font-bold" href="{{ route('login') }}" wire:navigate>
+        <a class="text-primary hover:text-black font-bold" href="{{ route('login') }}" wire:navigate>
             {{ __('Login') }}
         </a>
     </div>
