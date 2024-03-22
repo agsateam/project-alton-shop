@@ -8,7 +8,6 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
         <!-- Styles -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -16,7 +15,7 @@
     </head>
     <body data-theme="{{ $theme }}" class="antialiased font-sans">
         <header class="sticky top-0 z-50">
-            <x-home.navbar theme="{{ $theme }}"/>
+            <x-home.navbar/>
         </header>
 
         <main class="relative">

@@ -1,19 +1,15 @@
-@props([
-  'theme'
-])
-
 <?php 
 $menu = ['Baby & Kids','Set','Atasan','Muslim','Aksesoris','Lainnya'];
 ?>
 
-<div data-theme="{{ $theme }}" class="navbar py-0 bg-primary text-white">
+<div class="navbar py-0 bg-primary text-white">
     <div class="navbar-start">
       <div class="dropdown">
         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
         </div>
         {{-- navbar untuk responsif nanti --}}
-        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white text-black rounded-box w-52">
           <li>
             <a>Baby & Kids</a>
             <ul class="p-2">
@@ -61,7 +57,7 @@ $menu = ['Baby & Kids','Set','Atasan','Muslim','Aksesoris','Lainnya'];
       </div>
     </div>
     <div class="navbar-end mr-3">
-        <button class="btn btn-ghost btn-circle">
+        <button class="btn btn-ghost btn-circle" data-modal-target="search_modal" data-modal-toggle="search_modal" >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
         </button>
         <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
@@ -77,3 +73,18 @@ $menu = ['Baby & Kids','Set','Atasan','Muslim','Aksesoris','Lainnya'];
         </a>
     </div>
   </div>
+
+
+  <!-- Search modal -->
+<div id="search_modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+  <div class="relative p-4 w-full max-w-md max-h-full">
+      <div class="relative">
+        <form class="p-4 md:p-5">
+          <div class="flex">
+            <input type="text" name="product" class="text-sm rounded-lg grow focus:ring-primary-600 focus:border-primary-600 p-2.5" placeholder="Cari produk ..." required>
+            <button type="submit" class="btn btn-primary ml-2">Cari</button>
+          </div>
+        </form>
+      </div>
+  </div>
+</div> 
