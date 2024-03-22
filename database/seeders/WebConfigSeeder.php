@@ -14,7 +14,7 @@ class WebConfigSeeder extends Seeder
     public function run(): void
     {
         DB::table('web_configs')->insert([
-            'theme' => "#9A3B3B",
+            'theme' => "smokyTopaz",
         ]);
     }
 }
