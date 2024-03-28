@@ -24,11 +24,11 @@ git clone https://github.com/agsateam/project-alton-shop.git
 cd project-alton-shop
 ```
 
-3 - Install dependencies, saranku pakai "pnpm" :)
+3 - Install dependencies (PNPM recommended)
 
 ```bash
 composer install
-npm install  /  pnpm install
+pnpm install
 ```
 
 4 - Copy .env file
@@ -46,12 +46,12 @@ php artisan key:generate
 6 - Create Database & Run Migration, buat database dengan nama "alton" kemudian run :
 
 ```bash
-php artisan migrate
+php artisan migrate:fresh --seed
 ```
 
 7 - Run Server
 
 ```bash
 php artisan serve
-pnpm dev  /  npm run dev
+pnpm dev
 ```
