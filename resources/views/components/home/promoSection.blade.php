@@ -76,7 +76,7 @@ $produk = array(
         <img class="card-img" src="{{ $item->gambar }}" alt="">
         <div class="text-product p-1 flex flex-col justify-start">
           <div class="nama-produk font-medium text-base">{{ $item->nama }}</div>
-          <div class="harga-asli font-light text-xs text-price">{{ $item->harga_asli }}</div>
+          <div class="harga-asli font-light text-xs text-price line-through">{{ $item->harga_asli }}</div>
           <div class="harga-promo text-price font-medium text-sm">{{ $item->harga_promo }}</div>
         </div>
       </div>
