@@ -30,6 +30,8 @@
 
         <main class="relative">
             <x-home.slider/>
+
+            <x-home.promoSection/>
     
             {{-- Promo --}}
             <div class="hero min-h-screen bg-base-200">
@@ -46,5 +48,6 @@
         <footer></footer>
 
         @livewireScripts
+        
     </body>
 </html>

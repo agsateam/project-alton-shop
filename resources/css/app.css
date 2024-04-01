@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    box-sizing: border-box;
+}
+
+.swiper {
+    /* Cek Responsive Swiper Atur disini */
+    width: 100%;
+    height: 300px;
+}
+
+.swiper-slide {
+    width: 100px;
+}
+
+.card-img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.text-product {
+    width: 100%;
+    background-color: #ececec;
+}
+
+/* Responsive */
+
+/* Tablet */
+@media screen and (max-width: 840px) {
+}
+
+/* Mobile */
+@media screen and (max-width: 425px) {
+}
