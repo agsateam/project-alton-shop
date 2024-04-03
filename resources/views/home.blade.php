@@ -45,7 +45,9 @@
             </div>
         </main>
         
-        <footer></footer>
+        <footer>
+            <x-home.footer_section/>
+        </footer>
 
         @livewireScripts
         
