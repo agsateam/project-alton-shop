@@ -32,7 +32,9 @@
             <x-home.slider/>
 
             <x-home.promoSection/>
-    
+            
+            <x-home.productSection/>
+
             {{-- Promo --}}
             <div class="hero min-h-screen bg-base-200">
                 <div class="hero-content text-center">
