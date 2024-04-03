@@ -1,0 +1,1 @@
+<a {{ $attributes }}  class="{{ request()->fullUrlIs(url($href)) ? "btn-primary text-white" : "btn-ghost text-black hover:bg-primary hover:text-white" }} btn w-full my-2 justify-start">{{$slot}}</a>
