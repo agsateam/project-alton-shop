@@ -5,10 +5,11 @@
   </header>
   <main class="relative">
   <x-home.slider/>
-
+  
+  {{-- Promo --}}
     <x-home.promoSection/>
 
-    {{-- Promo --}}
+    <x-home.productSection/>
     <div class="hero min-h-screen bg-base-200">
         <div class="hero-content text-center">
           <div class="max-w-md">
@@ -18,5 +19,6 @@
           </div>
         </div>
     </div>
+
   </main>
 <x-master.footer/>
