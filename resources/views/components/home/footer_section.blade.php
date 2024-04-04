@@ -109,7 +109,7 @@
     </nav> 
     <nav class="hidden md:flex md:flex-col">
       <h4 class="font-semibold text-xl">Informasi</h4> 
-      <a href="/paduan" wire:navigate class="link link-hover">Panduan</a>
+      <a href="/panduan" wire:navigate class="link link-hover">Panduan</a>
       <a href="/tos" wire:navigate class="link link-hover">Syarat & Ketentuan</a>
       <a href="/privacy-policy" wire:navigate class="link link-hover">Kebijakan Privasi</a>
       <a href="#" wire:navigate class="link link-hover">Tentang Kami</a>

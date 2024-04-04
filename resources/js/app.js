@@ -42,6 +42,19 @@ document.addEventListener("livewire:navigated", () => {
         },
     });
 
+    //panduan
+    const acccordincontent = document.querySelectorAll(".accordion-content");
+    const accordionicons = document.querySelectorAll(".accordion-icons");
+    document.addEventListener("click", function () {
+        acccordincontent.forEach((content, index) => {
+            if (content.classList.contains("hidden")) {
+                accordionicons[index].classList.remove("rotate-45");
+            } else {
+                accordionicons[index].classList.add("rotate-45");
+            }
+        });
+    });
+
     // Function Responsive Swiper
     function responsiveSlidePerView() {
         if (window.innerWidth >= 1024) {
