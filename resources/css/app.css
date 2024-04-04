@@ -27,6 +27,18 @@
     background-color: #ececec;
 }
 
+/* Component Home/ProductSection */
+.product_section {
+    background-color: #ececec;
+}
+.card_product {
+    width: 250px;
+    height: 350px;
+    background-color: #ececec;
+}
+.ket_product {
+    height: 100px;
+}
 /* Responsive */
 
 /* Tablet */

@@ -42,9 +42,11 @@ const swiper = new Swiper(".swiper", {
 
 // Function Responsive Swiper
 function responsiveSlidePerView() {
-    if (window.innerWidth >= 768) {
+    if (window.innerWidth >= 1024) {
         // PC
         swiper.params.slidesPerView = 5;
+    } else if (window.innerWidth >= 840) {
+        swiper.params.slidesPerView = 4;
     } else if (window.innerWidth >= 560) {
         swiper.params.slidesPerView = 3;
     } else if (window.innerWidth >= 425) {
