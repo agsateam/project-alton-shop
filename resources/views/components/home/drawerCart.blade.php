@@ -15,7 +15,7 @@
     </div>
     
     {{-- content --}}
-    <div class="flex-1 overflow-auto py-3">
+    <div class="flex-1 overflow-auto px-3 pt-3 pb-60 sm:pb-3 sm:mb-44">
         {{-- product list --}}
         @for ($i = 0; $i < 7; $i++)
         <div class="flex flex-row px-6 py-3 hover:bg-gray-100">
@@ -54,7 +54,7 @@
     </div>
 
     {{-- order info --}}
-    <div class="px-6 py-4 border-t-2">
+    <div class="fixed bottom-0 right-0 w-full sm:w-[500px] h-44 px-6 py-4 border-t-2 bg-white">
         {{-- subtotal & total --}}
         <div class="flex flex-row">
             <span class="grow text-sm">Subtotal</span>
