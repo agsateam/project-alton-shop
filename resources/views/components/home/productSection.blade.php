@@ -109,7 +109,7 @@ $products = [
   {{-- Cards Products --}}
   <div class="cards_products_section flex flex-wrap gap-5 md:gap-12 justify-center">
     @foreach($products as $product)
-    <a href="#">
+    <a href="/product/asas" wire:navigate>
       <div class="card_product w-[150px] sm:w-[170px] md:w-[250px] drop-shadow-md">
         <img src="https://i.pinimg.com/564x/91/53/77/915377ae07969319fea5bc55d3422b0e.jpg" alt="Gambar Produk">
         <div class="ket_product flex flex-col justify-around">
