@@ -65,8 +65,8 @@ $produk = array(
 ?>
 {{-- End of Data Dummy--}}
 
-<div class="w-full h-96 bg-primary text-white p-3">
-  <div class="text-center font-bold text-3xl mt-2">PROMO</div>
+<div class="w-full bg-primary text-white px-3 py-10 lg:py-16">
+  <div class="text-center font-bold text-3xl mt-2">DISCOUNT PRODUCT</div>
   <div class="swiper">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper py-4 mx-auto">
