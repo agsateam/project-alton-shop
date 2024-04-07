@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TosController;
 use App\Http\Controllers\HomeController;
@@ -13,6 +14,9 @@ Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index']);
 Route::get('/panduan', [PanduanController::class, 'index']);
 
 Route::get('/product/{id?}', [ProductController::class, 'index']);
+
+Route::get('/checkout', [CheckoutController::class, 'index']);
+// Route::post('/checkout', [CheckoutController::class, 'createTransaction']);
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

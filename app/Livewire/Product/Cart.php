@@ -12,6 +12,7 @@ class Cart extends Component
     public $totalQty = 0;
 
     public $isHideDrawer = true;
+    public $isFromCheckoutPage = false;
 
     public function render()
     {
@@ -109,5 +110,11 @@ class Cart extends Component
     {
         $this->hideDrawer();
         return $this->redirect('/', navigate: true);
+    }
+
+    public function toCheckoutPage()
+    {
+        $this->hideDrawer();
+        return $this->redirect('/checkout', navigate: true);
     }
 }

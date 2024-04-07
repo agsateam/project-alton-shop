@@ -71,8 +71,8 @@
         </div>
         
         <div class="mt-2">
-            <button wire:click="hideDrawer" class="btn btn-primary rounded-none w-full">
-                Checkout
+            <button {{ !$cart && !$isFromCheckoutPage ? 'disabled' : '' }} wire:click="toCheckoutPage" class="btn btn-primary rounded-none w-full">
+                {{ $isFromCheckoutPage ? 'Perbarui' : 'Checkout' }}
             </button>
             <button wire:click="continueShopping" class="btn btn-sm text-xs font-normal rounded-none w-full mt-2">
                 Lanjut Belanja
