@@ -13,9 +13,16 @@ class ProductController extends Controller
         ];
 
         $product = [
+            'product_id' => 'PRD0001',
             'name' => 'Kemeja Lengan Panjang Navi Kotak-Kotak Jokowi',
             'price' => 124000,
             'sizes' => ['S', 'M', 'L', 'XL'],
+            'stock' => [
+                'S' => 15,
+                'M' => 3,
+                'L' => 5,
+                'XL' => 6,
+            ],
             'sizeChartImage' => 'https://cdn.shopify.com/s/files/1/0605/5231/5110/files/6acd0c4e1f946834c6d5d2021b265de9_700x_be925a62-624c-4123-89f6-e087f0316981_480x480.jpg',
             'description' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. A obcaecati perspiciatis recusandae modi. Dolorem quae ullam iure labore veniam ducimus quidem voluptates maiores, perspiciatis dolores! Id cumque sunt exercitationem maxime? Amet, minus! Tempora, vitae. Repudiandae velit vitae rerum? Dolorum odio optio unde perspiciatis recusandae saepe beatae,
             autem possimus eius esse commodi vitae in deserunt debitis, voluptates, cum sit inventore magni modi mollitia sequi. Voluptates commodi earum alias itaque error doloribus dolore. Eius ipsa rem quis ex atque. Aliquid possimus perferendis dolorem id, dicta porro sit, libero laborum laboriosam, reiciendis odio dolor nam eum alias odit.
