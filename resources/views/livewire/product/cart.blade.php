@@ -24,9 +24,13 @@
         @endif
         @foreach ($cart as $item)
         <div class="flex flex-row px-6 py-3 hover:bg-gray-100">
-            <img src="{{ $item['photo'] }}" class="w-20 h-20">
+            {{-- TODO: change real product link --}}
+            <a href="/product/aaa" wire:navigate class="w-20 h-20">
+                <img src="{{ $item['photo'] }}">
+            </a>
             <div class="flex flex-col ml-3 w-full">
-                <span class="text-sm mb-3">{{ $item['name'] }}</span>
+                {{-- TODO: change real product link --}}
+                <a href="/product/aaa" wire:navigate class="text-sm mb-3">{{ $item['name'] }}</a>
                 <div class="flex flex-row">
                     <div class="flex flex-col grow">
                         {{-- size --}}
