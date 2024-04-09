@@ -42,7 +42,7 @@
             <a href="/panduan" wire:navigate class="py-2 text-xs">Panduan</a>
             <a href="/tos" wire:navigate class="py-2 text-xs">Syarat & Ketentuan</a>
             <a href="/privacy-policy" wire:navigate class="py-2 text-xs">Kebijakan Privasi</a>
-            <a href="#" wire:navigate class="py-2 text-xs">Tentang kami</a>
+            <a href="/about" wire:navigate class="py-2 text-xs">Tentang kami</a>
             <a href="#" wire:navigate class="py-2 text-xs">FAQ</a>
           </p>
         </div>
@@ -112,7 +112,7 @@
       <a href="/panduan" wire:navigate class="link link-hover">Panduan</a>
       <a href="/tos" wire:navigate class="link link-hover">Syarat & Ketentuan</a>
       <a href="/privacy-policy" wire:navigate class="link link-hover">Kebijakan Privasi</a>
-      <a href="#" wire:navigate class="link link-hover">Tentang Kami</a>
+      <a href="/about" wire:navigate class="link link-hover">Tentang Kami</a>
       <a href="#" wire:navigate class="link link-hover">FAQ</a>
     </nav>
     <nav class="hidden md:flex md:flex-col">

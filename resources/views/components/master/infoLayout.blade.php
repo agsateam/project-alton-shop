@@ -8,6 +8,7 @@
         <x-sidebar.button href="/panduan" wire:navigate>Panduan</x-sidebar.button>
         <x-sidebar.button href="/privacy-policy" wire:navigate>Kebijakan Privasi</x-sidebar.button>
         <x-sidebar.button href="/tos" wire:navigate>Syarat dan Ketentuan</x-sidebar.button>
+        <x-sidebar.button href="/about" wire:navigate>Tentang Kami</x-sidebar.button>
         <x-sidebar.button href="/faq" wire:navigate>FAQ</x-sidebar.button>
     </div>
 </div>
