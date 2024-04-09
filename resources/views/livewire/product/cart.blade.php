@@ -15,7 +15,7 @@
     </div>
     
     {{-- content --}}
-    <div class="flex-1 overflow-auto px-3 pt-3 pb-60 sm:pb-3 sm:mb-44">
+    <div class="flex-1 overflow-auto pt-3 pb-60 sm:pb-3 sm:mb-44">
         {{-- product list --}}
         @if (!$cart)
         <div class="w-full py-10 text-center text-gray-500">
@@ -35,7 +35,7 @@
                     <div class="flex flex-col grow">
                         {{-- size --}}
                         <div class="text-xs flex flex-row">
-                            <span class="mr-2">{{ $item['size'] }}</span> | <span class="ml-2 text-price">Stok : {{ $item['stock'] }}</span>
+                            <span class="mr-2">{{ $item['size'] }}</span> | <span class="ml-2 text-price">Stok <span class="font-semibold">{{ $item['stock'] }}</span></span>
                         </div>
                         <span class="font-semibold text-xs">@toRupiah($item['price'])</span>
                     </div>

@@ -12,53 +12,54 @@
     
     </div>
 
-    <div class="w-full flex flex-col md:flex-row p-5 md:px-10 md:py-0">
-        <div class="w-full">
+    <div class="w-full flex flex-col md:flex-row">
+        <div class="w-full py-5 px-5 md:px-10">
             @persist('checkout_items')
             {{-- Contact --}}
-            <div class="md:pt-10 pb-10 w-full md:w-4/5">
+            <div class="pb-10 w-full">
                 <div class="text-2xl font-bold mb-3">Kontak</div>
-                <input type="email" placeholder="Email" name="email" class="w-full mb-2 rounded-sm border-[#B7B7B7]">
-                <input type="text" placeholder="Nomor Telepon" name="phone" class="w-full rounded-sm border-[#B7B7B7]">
+                <x-input-float-label name="email" type="email" label="Email"/>
+                <x-input-float-label name="phone" type="text" label="Nomor Telepon"/>
             </div>
             
             {{-- Address --}}
-            <div class="pb-10 w-full md:w-4/5">
+            <div class="pb-10 w-full">
                 <div class="text-2xl font-bold mb-3">Informasi Pengiriman</div>
-                <input type="text" placeholder="Nama Lengkap Penerima" name="customer_name" class="w-full mb-2 rounded-sm border-[#B7B7B7]">
+                <x-input-float-label name="customer_name" type="text" label="Nama Lengkap Penerima"/>
                 <div class="flex flex-col md:flex-row">
-                    <select name="province" class="w-full md:w-1/2 mb-2 rounded-sm border-[#B7B7B7]">
-                        <option selected disabled>Provinsi</option>
+                    <x-select-float-label name="province" label="Provinsi" class="w-full md:w-1/2">
+                        <option selected disabled>Pilih Provinsi</option>
                         <option>Jawa Barat</option>
                         <option>Jawa Tengah</option>
                         <option>Jawa Timur</option>
-                    </select>
-                    <select name="city" class="w-full md:w-1/2 md:ml-2 mb-2 rounded-sm border-[#B7B7B7]">
-                        <option selected disabled>Kota</option>
+                    </x-select-float-label>
+                    <x-select-float-label name="city" label="Kota" class="w-full md:w-1/2 md:ml-2">
+                        <option selected disabled>Pilih Kota</option>
                         <option>Pekalongan</option>
                         <option>Batang</option>
-                        <option>Tegal</option>
-                    </select>
+                        <option>Pemalang</option>
+                    </x-select-float-label>
                 </div>
                 <div class="flex flex-col md:flex-row">
-                    <select name="district" class="w-full md:w-1/2 mb-2 rounded-sm border-[#B7B7B7]">
-                        <option selected disabled>Kecamatan</option>
+                    <x-select-float-label name="district" label="Kecamatan" class="w-full md:w-1/2">
+                        <option selected disabled>Pilih Kecamatan</option>
                         <option>Wiradesa</option>
                         <option>Tirto</option>
                         <option>Buaran</option>
                         <option>Kedungwuni</option>
-                    </select>
-                    <input type="text" placeholder="Kode POS" name="postal_code" class="w-full md:w-1/2 md:ml-2 mb-2 rounded-sm border-[#B7B7B7]">
+                    </x-select-float-label>
+                    <x-input-float-label name="postal_code" type="text" label="Kode POS" class="w-full md:w-1/2 mt-1 md:ml-2"/>
                 </div>
-                <textarea placeholder="Alamat Lengkap" name="customer_address" class="w-full rounded-sm border-[#B7B7B7]"></textarea>
+                <x-textarea-float-label name="customer_address" label="Alamat Lengkap" class="mt-1"/>
             </div>
+            @endpersist
             
             {{-- Ongkir --}}
-            <div class="pb-10 w-full md:w-4/5">
+            <div class="pb-10 w-full">
                 <div class="flex flex-row justify-between">
                     <div class="text-2xl font-bold mb-3">Pengiriman</div>
                     {{-- TODO: implement real ongkir by API --}}
-                    <button onclick="cekOngkir()" class="btn btn-sm bg-primary hover:bg-secondary rounded-sm text-white mr-3">
+                    <button onclick="cekOngkir()" class="btn btn-sm bg-primary hover:bg-secondary rounded-sm text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
                             <path d="M10.464 8.746c.227-.18.497-.311.786-.394v2.795a2.252 2.252 0 0 1-.786-.393c-.394-.313-.546-.681-.546-1.004 0-.323.152-.691.546-1.004ZM12.75 15.662v-2.824c.347.085.664.228.921.421.427.32.579.686.579.991 0 .305-.152.671-.579.991a2.534 2.534 0 0 1-.921.42Z" />
                             <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v.816a3.836 3.836 0 0 0-1.72.756c-.712.566-1.112 1.35-1.112 2.178 0 .829.4 1.612 1.113 2.178.502.4 1.102.647 1.719.756v2.978a2.536 2.536 0 0 1-.921-.421l-.879-.66a.75.75 0 0 0-.9 1.2l.879.66c.533.4 1.169.645 1.821.75V18a.75.75 0 0 0 1.5 0v-.81a4.124 4.124 0 0 0 1.821-.749c.745-.559 1.179-1.344 1.179-2.191 0-.847-.434-1.632-1.179-2.191a4.122 4.122 0 0 0-1.821-.75V8.354c.29.082.559.213.786.393l.415.33a.75.75 0 0 0 .933-1.175l-.415-.33a3.836 3.836 0 0 0-1.719-.755V6Z" clip-rule="evenodd" />
@@ -66,69 +67,127 @@
                         Cek Ongkir
                     </button>
                 </div>
-                <div class="flex flex-wrap">
-                    <button class="w-[47%] lg:w-[48%] h-28 mb-2 mr-2 btn bg-white rounded-sm border-[#B7B7B7] inline-flex items-center justify-center">
-                        <img class="w-1/2" src="https://storage.googleapis.com/kaj-prd-core-web/public/home-v3/logistics/jnt.png">
-                        <span id="ongkos-kirim"></span>
+                {{-- List Ongkir --}}
+                <div class="block" id="shipping_cost_desc">
+                    <div class="w-full bg-gray-200 px-3 py-6 inline-flex justify-center border-[1px] border-[#B7B7B7]">
+                        <span class="text-xs md:text-sm">Klik tombol "Cek Ongkir" di kanan atas untuk mengetahui ongkos kirim, pastikan alamat anda sudah benar.</span>
+                    </div>
+                </div>
+                <div class="hidden" id="shipping_cost_list">
+                    <button class="w-full p-3 flex flex-row border-[1px] border-[#B7B7B7]">
+                        <div class="mr-5 inline-flex self-center">
+                            <span class="w-7 h-7 rounded-full border-2 border-[#B7B7B7]"></span>
+                        </div>
+                        <div class="flex flex-col grow text-left">
+                            <span class="text-sm font-semibold">Sicepat Ekspres - REG</span>
+                            <span class="text-xs">2 - 3 days</span>
+                            <span class="text-xs">Dikirim dari PEKALONGAN ke BATUNUNGGAL - BANDUNG</span>
+                        </div>
+                        <span class="text-xs md:text-sm">Rp 16.000</span>
                     </button>
-                    <button class="w-[47%] lg:w-[48%] h-28 mb-2 mr-2 btn bg-white rounded-sm border-[#B7B7B7] inline-flex items-center justify-center">
-                        <img class="w-1/2" src="https://storage.googleapis.com/kaj-prd-core-web/public/home-v3/logistics/sicepat.png">
-                        <span id="ongkos-kirim"></span>
+                    <button class="w-full p-3 flex flex-row border-[1px] border-primary">
+                        <div class="mr-5 inline-flex self-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7 text-primary">
+                                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule="evenodd" />
+                            </svg>                          
+                        </div>
+                        <div class="flex flex-col grow text-left">
+                            <span class="text-sm font-semibold">J&T Ekspres - Reguler</span>
+                            <span class="text-xs">2 - 3 days</span>
+                            <span class="text-xs">Dikirim dari PEKALONGAN ke BATUNUNGGAL - BANDUNG</span>
+                        </div>
+                        <span class="text-xs md:text-sm">Rp 16.000</span>
                     </button>
-                    <button class="w-[47%] lg:w-[48%] h-28 mb-2 mr-2 btn bg-white rounded-sm border-[#B7B7B7] inline-flex items-center justify-center">
-                        <img class="w-1/2" src="https://storage.googleapis.com/kaj-prd-core-web/public/home-v3/logistics/anteraja.png">
-                        <span id="ongkos-kirim"></span>
-                    </button>
-                    <button class="w-[47%] lg:w-[48%] h-28 mb-2 mr-2 btn bg-white rounded-sm border-[#B7B7B7] inline-flex items-center justify-center">
-                        <img class="w-1/2" src="https://storage.googleapis.com/kaj-prd-core-web/public/home-v3/logistics/ninja.png">
-                        <span id="ongkos-kirim"></span>
+                    <button class="w-full p-3 flex flex-row border-[1px] border-[#B7B7B7]">
+                        <div class="mr-5 inline-flex self-center">
+                            <span class="w-7 h-7 rounded-full border-2 border-[#B7B7B7]"></span>
+                        </div>
+                        <div class="flex flex-col grow text-left">
+                            <span class="text-sm font-semibold">Ninja Ekspres - Reguler</span>
+                            <span class="text-xs">2 - 3 days</span>
+                            <span class="text-xs">Dikirim dari PEKALONGAN ke BATUNUNGGAL - BANDUNG</span>
+                        </div>
+                        <span class="text-xs md:text-sm">Rp 16.000</span>
                     </button>
                 </div>
             </div>
-            @endpersist
 
-            {{-- Items --}}
-            <div class="pb-10 w-4/5">
-                <div class="text-2xl font-bold mb-3">Items</div>
-                @foreach ($cart as $item)
-                <div class="flex flex-row py-3">
-                    <img src="{{ $item['photo'] }}" class="w-16 h-16">
-                    <div class="flex flex-col ml-3 w-full">
-                        <span class="text-sm mb-3">{{ $item['name'] }}</span>
-                        <div class="flex flex-row">
-                            <div class="flex flex-col grow">
-                                <span class="text-xs mr-2">Size {{ $item['size'] }}</span>
-                                <div class="text-xs flex flex-row">
-                                    <span class="mr-2">@toRupiah($item['price'])</span> x <span class="ml-2 mr-2">{{ $item['qty'] }}</span> =
-                                    <span class="ml-2 font-bold">@toRupiah($item['price'] * $item['qty'])</span>
-                                </div>
+            {{-- Payment --}}
+            <div class="w-full md:pb-16">
+                <div class="text-2xl font-bold mb-3">Pembayaran</div>
+                <div class="w-full rounded-sm border-[1px] bg-gray-200 border-[#B7B7B7]">
+                    <div class="w-full py-3 px-2 md:px-5 bg-white">
+                        <div class="flex flex-row text-sm items-center">
+                            <span class="text-xs md:text-sm grow pr-5">Payment by Xendit</span>
+                            <div class="flex">
+                                <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/5e3b05b68f3d31b87e84.svg" class="hidden sm:flex w-10 mr-1">
+                                <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/0169695890db3db16bfe.svg" class="hidden sm:flex w-10 mr-1">
+                                <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/a682f971fb8ae9f2351a.svg" class="w-10 mr-1">
+                                <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/b02db2649b5b33b432b8.svg" class="w-10 mr-1">
+                                <span class="w-10 bg-white border-[1px] border-gray-200 rounded-sm inline-flex items-center justify-center text-xs font-medium">+18</span>
                             </div>
                         </div>
                     </div>
+                    <div class="flex flex-col items-center w-full py-8 px-5 lg:px-36 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-270.8 371 102 52" class="w-44 mb-5 text-gray-400">
+                            <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" d="M-182 404v16.8c0 .7-.4 1.2-1 1.2h-75.7c-.7 0-1.2-.6-1.2-1.2v-47.6c0-.7.6-1.2 1.2-1.2h75.7c.7 0 1 .6 1 1.2V395m-78-14h78m-17 18h27m-3.9-4.6 4.5 4.6-4.5 4.6"></path>
+                            <circle cx="-255.5" cy="376.5" r="1.5" fill="currentColor"></circle><circle cx="-250.5" cy="376.5" r="1.5" fill="currentColor"></circle><circle cx="-245.5" cy="376.5" r="1.5" fill="currentColor"></circle>
+                        </svg>
+                        <span class="text-gray-500 text-xs md:text-sm">
+                            Setelah klik "Bayar sekarang", anda akan diarahkan ke halaman pembayaran dari Xendit untuk menyelesaikan pembelian anda dengan aman.
+                        </span>
+                    </div>
                 </div>
-                @endforeach
             </div>
+
         </div>
 
-        <div class="w-full md:w-3/5 md:pr-10">
-            <div class="block md:sticky md:top-0 md:pt-10">
-                <div class="text-2xl font-bold mb-10">Ringkasan</div>
-                <div class="flex py-1">
-                    <span class="grow">Subtotal</span>
-                    <span>@toRupiah($subTotal)</span>
+        <div class="w-full md:w-3/5 px-5 md:px-10 md:bg-gray-50">
+            <div class="block md:sticky md:top-0 pb-10 pt-10 md:pt-5">
+                {{-- Items --}}
+                <div class="pb-10 w-full">
+                    <div class="text-2xl font-bold mb-2">Items</div>
+                    @foreach ($cart as $item)
+                    <div class="flex flex-row py-2">
+                        <div class="indicator">
+                            <img src="{{ $item['photo'] }}" class="w-16 h-14">
+                            <span class="badge badge-md bg-primary text-white indicator-item mr-2">{{ $item['size'] }}</span>
+                        </div>
+                        <div class="flex flex-col ml-5 w-full">
+                            <span class="text-sm mb-2">{{ $item['name'] }}</span>
+                            <div class="text-xs flex flex-row justify-between">
+                                <span class="mr-2">@toRupiah($item['price'])</span>
+                                x
+                                <span class="ml-2 mr-2">{{ $item['qty'] }}</span>
+                                =
+                                <span class="ml-2 font-bold">@toRupiah($item['price'] * $item['qty'])</span>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
-                {{-- TODO: real ongkir --}}
-                <div class="flex py-1">
-                    <span class="grow">Ongkos Kirim</span>
-                    <span>Rp 16.000</span>
+    
+                {{-- Ringkasan --}}
+                <div class="">
+                    <div class="text-2xl font-bold">Ringkasan</div>
+                    <div class="divider"></div>
+                    <div class="flex py-1">
+                        <span class="grow">Subtotal</span>
+                        <span>@toRupiah($subTotal)</span>
+                    </div>
+                    {{-- TODO: real ongkir --}}
+                    <div class="flex py-1">
+                        <span class="grow">Ongkos Kirim</span>
+                        <span>Rp 16.000</span>
+                    </div>
+                    <div class="flex py-1 font-bold">
+                        <span class="grow">Total</span>
+                        <span>@toRupiah($subTotal + 16000)</span>
+                    </div>
+                    <button {{ $subTotal == 0 ? 'disabled' : '' }} class="btn btn-primary w-full text-white rounded-sm mt-5">
+                        <span>Bayar Sekarang</span>
+                    </button>
                 </div>
-                <div class="flex py-1 font-bold">
-                    <span class="grow">Total</span>
-                    <span>@toRupiah($subTotal + 16000)</span>
-                </div>
-                <button {{ $subTotal == 0 ? 'disabled' : '' }} class="btn btn-primary w-full text-white rounded-sm mt-5">
-                    <span>Checkout</span>
-                </button>
             </div>
         </div>
     </div>
@@ -137,10 +196,14 @@
 
     <script>
         function cekOngkir(){
-            ongkir = document.querySelectorAll("#ongkos-kirim");
-            ongkir.forEach(element => {
-                element.innerHTML = 'Rp 16.000';
-            });
+            desc = document.getElementById("shipping_cost_desc");
+            list = document.getElementById("shipping_cost_list");
+
+            desc.classList.remove("block");
+            desc.classList.add("hidden");
+
+            list.classList.remove("hidden");
+            list.classList.add("block");
         }
     </script>
 
