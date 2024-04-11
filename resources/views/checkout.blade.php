@@ -18,37 +18,35 @@
             {{-- Contact --}}
             <div class="pb-10 w-full">
                 <div class="text-2xl font-bold mb-3">Kontak</div>
-                <x-input-float-label name="email" type="email" label="Email"/>
+                <x-input-float-label name="email" type="email" label="Email" class="mb-3"/>
                 <x-input-float-label name="phone" type="text" label="Nomor Telepon"/>
             </div>
             
             {{-- Address --}}
             <div class="pb-10 w-full">
                 <div class="text-2xl font-bold mb-3">Informasi Pengiriman</div>
-                <x-input-float-label name="customer_name" type="text" label="Nama Lengkap Penerima"/>
+                <x-input-float-label name="customer_name" type="text" label="Nama Lengkap Penerima" class="mb-2"/>
                 <div class="flex flex-col md:flex-row">
-                    <x-select-float-label name="province" label="Provinsi" class="w-full md:w-1/2">
-                        <option selected disabled>Pilih Provinsi</option>
-                        <option>Jawa Barat</option>
-                        <option>Jawa Tengah</option>
-                        <option>Jawa Timur</option>
-                    </x-select-float-label>
+                    <x-select-float-label name="province" label="Provinsi" class="w-full md:w-1/2"/>
                     <x-select-float-label name="city" label="Kota" class="w-full md:w-1/2 md:ml-2">
                         <option selected disabled>Pilih Kota</option>
-                        <option>Pekalongan</option>
-                        <option>Batang</option>
-                        <option>Pemalang</option>
+                        <option disabled>Pilih provinsi lebih dulu.</option>
                     </x-select-float-label>
                 </div>
                 <div class="flex flex-col md:flex-row">
                     <x-select-float-label name="district" label="Kecamatan" class="w-full md:w-1/2">
                         <option selected disabled>Pilih Kecamatan</option>
-                        <option>Wiradesa</option>
-                        <option>Tirto</option>
-                        <option>Buaran</option>
-                        <option>Kedungwuni</option>
+                        <option disabled>Pilih kota lebih dulu.</option>
                     </x-select-float-label>
-                    <x-input-float-label name="postal_code" type="text" label="Kode POS" class="w-full md:w-1/2 mt-1 md:ml-2"/>
+                    <div class="w-full md:w-1/2 mt-1 mb-2 md:ml-2">
+                        <x-input-float-label name="postal_code" type="text" label="Kode POS" class="mb-0"/>
+                        <a class="text-xs text-primary hover:text-secondary font-semibold inline-flex mt-1 md:mt-2" href="https://kodepos.posindonesia.co.id/kodeposnewlist" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+                            </svg>
+                            &nbsp;Cari Kode POS
+                        </a>
+                    </div>
                 </div>
                 <x-textarea-float-label name="customer_address" label="Alamat Lengkap" class="mt-1"/>
             </div>
@@ -70,7 +68,25 @@
                 {{-- List Ongkir --}}
                 <div class="block" id="shipping_cost_desc">
                     <div class="w-full bg-gray-200 px-3 py-6 inline-flex justify-center border-[1px] border-[#B7B7B7]">
-                        <span class="text-xs md:text-sm">Klik tombol "Cek Ongkir" di kanan atas untuk mengetahui ongkos kirim, pastikan alamat anda sudah benar.</span>
+                        <span class="text-xs md:text-sm text-gray-500">Klik tombol "Cek Ongkir" di kanan atas untuk mengetahui ongkos kirim, pastikan alamat anda sudah benar.</span>
+                    </div>
+                </div>
+                <div class="hidden" id="shipping_cost_load">
+                    <div class="w-full p-3 flex flex-col border-[1px] border-[#B7B7B7]">
+                        <div class="flex flex-row justify-between">
+                            <span class="w-32 md:w-52 h-4 mb-1 bg-gray-300 rounded-sm animate-pulse"></span>
+                            <span class="w-16 h-4 mb-1 bg-gray-300 rounded-sm animate-pulse"></span>
+                        </div>
+                        <span class="w-16 md:w-32 h-4 mb-1 bg-gray-300 rounded-sm animate-pulse"></span>
+                        <span class="w-full h-4 mb-2 bg-gray-300 rounded-sm animate-pulse"></span>
+                    </div>
+                    <div class="w-full p-3 flex flex-col border-[1px] border-[#B7B7B7]">
+                        <div class="flex flex-row justify-between">
+                            <span class="w-32 md:w-52 h-4 mb-1 bg-gray-300 rounded-sm animate-pulse"></span>
+                            <span class="w-16 h-4 mb-1 bg-gray-300 rounded-sm animate-pulse"></span>
+                        </div>
+                        <span class="w-16 md:w-32 h-4 mb-1 bg-gray-300 rounded-sm animate-pulse"></span>
+                        <span class="w-full h-4 mb-2 bg-gray-300 rounded-sm animate-pulse"></span>
                     </div>
                 </div>
                 <div class="hidden" id="shipping_cost_list">
@@ -147,6 +163,11 @@
                 {{-- Items --}}
                 <div class="pb-10 w-full">
                     <div class="text-2xl font-bold mb-2">Items</div>
+                    @if (!$cart)
+                    <div class="w-full bg-gray-200 px-3 py-6 inline-flex justify-center border-[1px] border-[#B7B7B7] text-xs md:text-sm text-gray-500">
+                        Keranjang anda masih kosong.
+                    </div>
+                    @endif
                     @foreach ($cart as $item)
                     <div class="flex flex-row py-2">
                         <div class="indicator">
@@ -184,9 +205,7 @@
                         <span class="grow">Total</span>
                         <span>@toRupiah($subTotal + 16000)</span>
                     </div>
-                    <button {{ $subTotal == 0 ? 'disabled' : '' }} class="btn btn-primary w-full text-white rounded-sm mt-5">
-                        <span>Bayar Sekarang</span>
-                    </button>
+                    @livewire('checkout.submit', ['subTotal' => $subTotal])
                 </div>
             </div>
         </div>
@@ -195,15 +214,111 @@
     @livewire('product.cart', ['isFromCheckoutPage' => true])
 
     <script>
+        selectProvince = document.querySelector("#province");
+        selectCity = document.querySelector("#city");
+        selectDistrict = document.querySelector("#district");
+
+        getProvinces(selectProvince);
+
+        function getProvinces(selectProvince){
+            selectProvince.innerHTML = `
+                <option selected disabled>Pilih Provinsi</option>
+                <option disabled>Loading ...</option>
+            `;
+
+            fetch('https://vardrz.github.io/api-wilayah-indonesia/static/api/provinces.json')
+                .then(response => response.json())
+                .then((data) => {
+                    console.log(data.length + " provinces loaded");
+                    
+                    selectProvince.innerHTML = `<option selected disabled>Pilih Provinsi</option>`;
+                    data.forEach(item => {
+                        selectProvince.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                    });
+                })
+                .catch((error) => {
+                    selectProvince.innerHTML = `
+                        <option selected disabled>Pilih Provinsi</option>
+                        <option disabled>Data tidak ditemukan, reload halaman!</option>
+                    `;
+                });
+        }
+
+        selectProvince.addEventListener("change", (event) => {
+            selectCity.innerHTML = `
+                <option selected disabled>Pilih Kota</option>
+                <option disabled>Loading ...</option>
+            `;
+            selectDistrict.innerHTML = `
+                <option selected disabled>Pilih Kecamatan</option>
+                <option disabled>Pilih kota lebih dulu.</option>
+            `;
+
+            fetch(`https://vardrz.github.io/api-wilayah-indonesia/static/api/regencies/${event.target.value}.json`)
+                .then(response => response.json())
+                .then((data) => {
+                    console.log(data.length + " city loaded");
+                    
+                    selectCity.innerHTML = `<option selected disabled>Pilih Kota</option>`;
+                    data.forEach(item => {
+                        selectCity.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                    });
+                })
+                .catch((error) => {
+                    selectCity.innerHTML = `
+                        <option selected disabled>Pilih Kota</option>
+                        <option disabled>Data tidak ditemukan, reload halaman!</option>
+                    `;
+                });
+        });
+
+        selectCity.addEventListener("change", (event) => {
+            selectDistrict.innerHTML = `
+                <option selected disabled>Pilih Kecamatan</option>
+                <option disabled>Loading ...</option>
+            `;
+
+            fetch(`https://vardrz.github.io/api-wilayah-indonesia/static/api/districts/${event.target.value}.json`)
+                .then(response => response.json())
+                .then((data) => {
+                    console.log(data.length + " district loaded");
+                    
+                    selectDistrict.innerHTML = `<option selected disabled>Pilih Kecamatan</option>`;
+                    data.forEach(item => {
+                        selectDistrict.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                    });
+                })
+                .catch((error) => {
+                    selectDistrict.innerHTML = `
+                        <option selected disabled>Pilih Kecamatan</option>
+                        <option disabled>Data tidak ditemukan, reload halaman!</option>
+                    `;
+                });
+        });
+
         function cekOngkir(){
             desc = document.getElementById("shipping_cost_desc");
+            load = document.getElementById("shipping_cost_load");
             list = document.getElementById("shipping_cost_list");
 
+            // hide description
             desc.classList.remove("block");
             desc.classList.add("hidden");
-
-            list.classList.remove("hidden");
-            list.classList.add("block");
+            // hide list (if showed)
+            list.classList.remove("block");
+            list.classList.add("hidden");
+            // show loader
+            load.classList.remove("hidden");
+            load.classList.add("block");
+            
+            setTimeout(() => {
+                // hide loader
+                load.classList.remove("block");
+                load.classList.add("hidden");
+                // show list
+                list.classList.remove("hidden");
+                list.classList.add("block");                
+            }, 5000);
         }
     </script>
 
