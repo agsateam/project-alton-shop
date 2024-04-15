@@ -14,7 +14,7 @@
 
     <div class="w-full flex flex-col md:flex-row">
         <div class="w-full py-5 px-5 md:px-10">
-            @persist('checkout_items')
+            @persist('checkout_form')
             {{-- Contact --}}
             <div class="pb-10 w-full">
                 <div class="text-2xl font-bold mb-3">Kontak</div>
@@ -78,15 +78,7 @@
                             <span class="w-16 h-4 mb-1 bg-gray-300 rounded-sm animate-pulse"></span>
                         </div>
                         <span class="w-16 md:w-32 h-4 mb-1 bg-gray-300 rounded-sm animate-pulse"></span>
-                        <span class="w-full h-4 mb-2 bg-gray-300 rounded-sm animate-pulse"></span>
-                    </div>
-                    <div class="w-full p-3 flex flex-col border-[1px] border-[#B7B7B7]">
-                        <div class="flex flex-row justify-between">
-                            <span class="w-32 md:w-52 h-4 mb-1 bg-gray-300 rounded-sm animate-pulse"></span>
-                            <span class="w-16 h-4 mb-1 bg-gray-300 rounded-sm animate-pulse"></span>
-                        </div>
-                        <span class="w-16 md:w-32 h-4 mb-1 bg-gray-300 rounded-sm animate-pulse"></span>
-                        <span class="w-full h-4 mb-2 bg-gray-300 rounded-sm animate-pulse"></span>
+                        <span class="w-full h-4 bg-gray-300 rounded-sm animate-pulse"></span>
                     </div>
                 </div>
                 <div class="hidden" id="shipping_cost_list">
@@ -140,7 +132,27 @@
                                 <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/0169695890db3db16bfe.svg" class="hidden sm:flex w-10 mr-1">
                                 <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/a682f971fb8ae9f2351a.svg" class="w-10 mr-1">
                                 <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/b02db2649b5b33b432b8.svg" class="w-10 mr-1">
-                                <span class="w-10 bg-white border-[1px] border-gray-200 rounded-sm inline-flex items-center justify-center text-xs font-medium">+18</span>
+                                
+                                <button class="w-10 bg-white border-[1px] border-gray-200 rounded-sm inline-flex items-center justify-center text-xs font-medium" onmouseover="showAllPayment(true)" onmouseout="showAllPayment(false)">+18</button>
+
+                                <div id="payment-more" class="hidden absolute rounded-sm px-4 py-2 bg-gray-600 text-white w-44 right-0 md:right-[40%] mr-[73px] md:mr-[85px] -mt-[80px]">
+                                    <p class="mb-2">
+                                        <span class="text-sm font-semibold">Virtual Account </span><br/>
+                                        <span class="text-xs mb-2">
+                                            BCA, BRI, BNI, Mandiri, CIMB Niaga, Permata, BSI, NeoBank
+                                        </span>                                
+                                    </p>
+                                    <p class="mb-2">
+                                        <span class="text-sm font-semibold">Kartu Kredit </span><br/>
+                                        <span class="text-xs mb-2">
+                                            MasterCard, VISA, JCB
+                                        </span>                                
+                                    </p>
+                                    <p>
+                                        <span class="text-sm font-semibold">QRIS</span>
+                                    </p>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -214,13 +226,10 @@
     @livewire('product.cart', ['isFromCheckoutPage' => true])
 
     <script>
-        selectProvince = document.querySelector("#province");
-        selectCity = document.querySelector("#city");
-        selectDistrict = document.querySelector("#district");
-
-        getProvinces(selectProvince);
-
-        function getProvinces(selectProvince){
+        getProvinces();
+        
+        function getProvinces(){
+            let selectProvince = document.querySelector("#province");
             selectProvince.innerHTML = `
                 <option selected disabled>Pilih Provinsi</option>
                 <option disabled>Loading ...</option>
@@ -243,58 +252,6 @@
                     `;
                 });
         }
-
-        selectProvince.addEventListener("change", (event) => {
-            selectCity.innerHTML = `
-                <option selected disabled>Pilih Kota</option>
-                <option disabled>Loading ...</option>
-            `;
-            selectDistrict.innerHTML = `
-                <option selected disabled>Pilih Kecamatan</option>
-                <option disabled>Pilih kota lebih dulu.</option>
-            `;
-
-            fetch(`https://vardrz.github.io/api-wilayah-indonesia/static/api/regencies/${event.target.value}.json`)
-                .then(response => response.json())
-                .then((data) => {
-                    console.log(data.length + " city loaded");
-                    
-                    selectCity.innerHTML = `<option selected disabled>Pilih Kota</option>`;
-                    data.forEach(item => {
-                        selectCity.innerHTML += `<option value="${item.id}">${item.name}</option>`;
-                    });
-                })
-                .catch((error) => {
-                    selectCity.innerHTML = `
-                        <option selected disabled>Pilih Kota</option>
-                        <option disabled>Data tidak ditemukan, reload halaman!</option>
-                    `;
-                });
-        });
-
-        selectCity.addEventListener("change", (event) => {
-            selectDistrict.innerHTML = `
-                <option selected disabled>Pilih Kecamatan</option>
-                <option disabled>Loading ...</option>
-            `;
-
-            fetch(`https://vardrz.github.io/api-wilayah-indonesia/static/api/districts/${event.target.value}.json`)
-                .then(response => response.json())
-                .then((data) => {
-                    console.log(data.length + " district loaded");
-                    
-                    selectDistrict.innerHTML = `<option selected disabled>Pilih Kecamatan</option>`;
-                    data.forEach(item => {
-                        selectDistrict.innerHTML += `<option value="${item.id}">${item.name}</option>`;
-                    });
-                })
-                .catch((error) => {
-                    selectDistrict.innerHTML = `
-                        <option selected disabled>Pilih Kecamatan</option>
-                        <option disabled>Data tidak ditemukan, reload halaman!</option>
-                    `;
-                });
-        });
 
         function cekOngkir(){
             desc = document.getElementById("shipping_cost_desc");
@@ -319,6 +276,16 @@
                 list.classList.remove("hidden");
                 list.classList.add("block");                
             }, 5000);
+        }
+
+        function showAllPayment(bool){
+            let show = document.querySelector("#payment-more");
+            
+            if(bool){
+                show.classList.remove("hidden");
+            }else{
+                show.classList.add("hidden");
+            }
         }
     </script>
 
