@@ -8,12 +8,14 @@ use App\Http\Controllers\PanduanController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AccountController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/tos', [TosController::class, 'index']);
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index']);
 Route::get('/panduan', [PanduanController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
+Route::get('/account', [AccountController::class, 'index']);
 
 Route::get('/product/{id?}', [ProductController::class, 'index']);
 
