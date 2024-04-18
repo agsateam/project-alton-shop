@@ -30,7 +30,7 @@
             </a>
             <div class="flex flex-col ml-3 w-full">
                 {{-- TODO: change real product link --}}
-                <a href="/product/aaa" wire:navigate class="text-sm mb-3">{{ $item['name'] }}</a>
+                <a href="/product/{{ $item['product_id'] }}" wire:navigate class="text-sm mb-3">{{ $item['name'] }}</a>
                 <div class="flex flex-row">
                     <div class="flex flex-col grow">
                         {{-- size --}}
