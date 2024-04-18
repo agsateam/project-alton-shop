@@ -72,7 +72,7 @@ $produk = array(
     <div class="swiper-wrapper py-4 mx-auto">
       <!-- Slides -->
       @foreach($produk as $item)
-      <a href="/product/asaa" wire:navigate>
+      <a href="/product/asaa">
         <div class="swiper-slide text-black text-center flex">
         <img class="card-img" src="{{ $item->gambar }}" alt="">
         <div class="text-product p-1 flex flex-col justify-start">
