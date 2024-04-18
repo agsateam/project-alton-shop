@@ -1,107 +1,8 @@
 <?php
-// Data Dummy Product
-$products = [
-    [
-        'name' => 'Product 1',
-        'price' => 'Rp 100.000,00',
-        'rating' => 4,
-    ],
-    [
-        'name' => 'Product 2',
-        'price' => 'Rp 150.000,00',
-        'rating' => 3,
-    ],
-    [
-        'name' => 'Product 3',
-        'price' => 'Rp 120.000,00',
-        'rating' => 5,
-    ],
-    [
-        'name' => 'Product 4',
-        'price' => 'Rp 80.000,00',
-        'rating' => 2,
-    ],
-    [
-        'name' => 'Product 5',
-        'price' => 'Rp 200.000,00',
-        'rating' => 4,
-    ],
-    [
-        'name' => 'Product 6',
-        'price' => 'Rp 90.000,00',
-        'rating' => 3,
-    ],
-    [
-        'name' => 'Product 7',
-        'price' => 'Rp 110.000,00',
-        'rating' => 4,
-    ],
-    [
-        'name' => 'Product 8',
-        'price' => 'Rp 130.000,00',
-        'rating' => 5,
-    ],
-    [
-        'name' => 'Product 9',
-        'price' => 'Rp 70.000,00',
-        'rating' => 3,
-    ],
-    [
-        'name' => 'Product 10',
-        'price' => 'Rp 180.000,00',
-        'rating' => 4,
-    ],
-    [
-        'name' => 'Product 11',
-        'price' => 'Rp 100.000,00',
-        'rating' => 5,
-    ],
-    [
-        'name' => 'Product 12',
-        'price' => 'Rp 160.000,00',
-        'rating' => 3,
-    ],
-    [
-        'name' => 'Product 13',
-        'price' => 'Rp 140.000,00',
-        'rating' => 4,
-    ],
-    [
-        'name' => 'Product 14',
-        'price' => 'Rp 190.000,00',
-        'rating' => 2,
-    ],
-    [
-        'name' => 'Product 15',
-        'price' => 'Rp 170.000,00',
-        'rating' => 4,
-    ],
-    [
-        'name' => 'Product 16',
-        'price' => 'Rp 120.000,00',
-        'rating' => 3,
-    ],
-    [
-        'name' => 'Product 17',
-        'price' => 'Rp 130.000,00',
-        'rating' => 5,
-    ],
-    [
-        'name' => 'Product 18',
-        'price' => 'Rp 100.000,00',
-        'rating' => 4,
-    ],
-    [
-        'name' => 'Product 19',
-        'price' => 'Rp 150.000,00',
-        'rating' => 3,
-    ],
-    [
-        'name' => 'Product 20',
-        'price' => 'Rp 110.000,00',
-        'rating' => 4,
-    ],
-];
+
+use App\Models\Product;
+$products = Product::limit(20)->get();
+
 ?>
 
 <div class="product_section px-4 sm:px-8 py-8">
@@ -109,7 +10,7 @@ $products = [
   {{-- Cards Products --}}
   <div class="cards_products_section flex flex-wrap gap-5 md:gap-12 justify-center">
     @foreach($products as $product)
-    <a href="/product/asas" wire:navigate>
+    <a href="/product/{{ $product->product_id }}" wire:navigate>
       <div class="card_product w-[150px] sm:w-[170px] md:w-[250px] drop-shadow-md">
         <img src="https://i.pinimg.com/564x/91/53/77/915377ae07969319fea5bc55d3422b0e.jpg" alt="Gambar Produk">
         <div class="ket_product flex flex-col justify-around">
@@ -129,7 +30,7 @@ $products = [
                 @endfor
               </div>
             {{-- End Rating --}}
-            <div class="text-price font-medium text-sm px-2 mt-2 md:mt-0">{{ $product['price'] }}</div>
+            <div class="text-price font-medium text-sm px-2 mt-2 md:mt-0">@toRupiah($product['price'])</div>
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             WebConfigSeeder::class,
+            ProductSeeder::class
         ]);
 
         User::factory()->create([
