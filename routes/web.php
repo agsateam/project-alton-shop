@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PanduanController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PrivacyPolicyController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -14,6 +15,9 @@ Route::get('/tos', [TosController::class, 'index']);
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index']);
 Route::get('/panduan', [PanduanController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
+
+Route::get('/atasan', [CategoryController::class, 'index']);
+Route::get('/flanel', [CategoryController::class, 'subCategory']);
 
 Route::get('/product/{id?}', [ProductController::class, 'index']);
 
