@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 class CategoryController extends Controller
 {
-    public function index($id = null)
+    public function index($slug = null)
     {
+        if ($slug == null) {
+            return redirect('/');
+        }
+
         $accordion = [
             // [
             //     'no' => '1',
@@ -17,6 +21,7 @@ class CategoryController extends Controller
             ]
         ];
 
+        $categoryName = "Atasan"; // iki mngko ngeget dek db
         $subCategory = ['flanel', 'katun', 'sutra', 'rayon', 'spandek', 'kaos', 'kain', 'bahan', 'kemeja'];
 
         $product = [
@@ -162,7 +167,8 @@ class CategoryController extends Controller
             ],
         ];
 
-        return view('category.atasan', [
+        return view('category.category', [
+            'categoryName' => $categoryName,
             'accordion' => $accordion,
             'subCategory' => $subCategory,
             'products' => $product,
@@ -334,7 +340,7 @@ class CategoryController extends Controller
         }
         // dd($subCategories);
 
-        return view('subCategory.index', [
+        return view('category.subCategory', [
             'accordion' => $accordion,
             'subCategory' => $subCategory,
             'products' => $product,

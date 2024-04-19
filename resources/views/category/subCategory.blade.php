@@ -2,16 +2,38 @@
     <x-master.categoryLayout :accordions="$accordion" :subCategories="$subCategory" :products="$products">
 
         <h1 class="text-3xl lg:text-5xl mb-5">
-            Atasan
+            Flanel
+            <div class="w-max text-left">
+                <nav aria-label="breadcrumb">
+                  <ol class="flex w-full flex-wrap items-center rounded-md bg-blue-gray-50 bg-opacity-60 mt-2">
+                    <li class="flex cursor-pointer items-center font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased transition-colors duration-300 hover:text-primary">
+                      <a class="opacity-60" href="/atasan">
+                        <span>Atasan</span>
+                      </a>
+                      <span class="pointer-events-none mx-2 select-none font-sans text-sm font-normal leading-normal text-blue-gray-500 antialiased">
+                        /
+                      </span>
+                    </li>
+                    <li class="flex cursor-pointer items-center font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased transition-colors duration-300 hover:text-primary">
+                      <a
+                        class="font-medium text-blue-gray-900 transition-colors hover:text-primary"
+                        href="/atasan/flanel"
+                      >
+                        Flanel
+                      </a>
+                    </li>
+                  </ol>
+                </nav>
+            </div>
         </h1>
 
         {{-- content category --}}
         <div class="md:pr-5 md:py-5 scroll-smooth">
             {{-- Cards Products --}}
-            <div class="cards_products_section flex flex-wrap gap-5 md:gap-12 justify-center">
+            <div class="flex flex-wrap justify-between md:mr-5">
                 @foreach($products as $product)
-                <a href="/product/asas" wire:navigate>
-                <div class="card_product w-[150px] sm:w-[170px] md:w-[200px] drop-shadow-md">
+                <a href="/product/asas" class="w-[48%] sm:w-[30%] lg:w-[23%]" wire:navigate>
+                <div class="card_product drop-shadow-md mb-5">
                     <img src="https://i.pinimg.com/564x/91/53/77/915377ae07969319fea5bc55d3422b0e.jpg" alt="Gambar Produk">
                     <div class="ket_product flex flex-col justify-around">
                     <div class="product_name text-md md:text-xl font-normal px-2">{{ $product['name'] }}</div>

@@ -11,28 +11,30 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
 Route::get('/', [HomeController::class, 'index']);
+
+// Info Pages
 Route::get('/tos', [TosController::class, 'index']);
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index']);
 Route::get('/panduan', [PanduanController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
 
-Route::get('/atasan', [CategoryController::class, 'index']);
-Route::get('/flanel', [CategoryController::class, 'subCategory']);
+// Category
+Route::get('/{categorySlug?}', [CategoryController::class, 'index']);
+Route::get('/{categorySlug}/{subSlug?}', [CategoryController::class, 'subCategory']);
 
+// Product
 Route::get('/product/{id?}', [ProductController::class, 'index']);
 
+// Checkout
 Route::get('/checkout', [CheckoutController::class, 'index']);
 // Route::post('/checkout', [CheckoutController::class, 'createTransaction']);
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+// User Pages
+Route::view('dashboard', 'dashboard')->middleware(['auth', 'verified'])->name('dashboard');
+Route::view('profile', 'profile')->middleware(['auth'])->name('profile');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
-
-    Route::get('/google/redirect', [App\Http\Controllers\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
-    Route::get('/google/callback', [App\Http\Controllers\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
+// Google Login
+Route::get('/google/redirect', [App\Http\Controllers\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('/google/callback', [App\Http\Controllers\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
 
 require __DIR__ . '/auth.php';

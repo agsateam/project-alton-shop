@@ -4,7 +4,7 @@
         {{ $slot }}
 
     </div>
-    <div class="mt-8 md:mt-0 w-full md:w-1/4 md:h-screen md:border-l-4 md:pl-4 md:border-gray-400">
+    <div class="sticky top-[80px] mt-8 md:mt-0 w-full md:w-1/4 md:h-screen md:border-l-4 md:pl-4 md:border-gray-400 hidden md:block">
         <div id="accordion-color-master" data-accordion="open" data-active-classes="bg-primary text-white border-white dark:text-white" data-inactive-classes="text-black border-black">
             @forEach ($accordions as $index)
                 <button type="button" class="flex items-center justify-between w-full p-3 font-medium border-black text-black border-b" data-accordion-target="#accordion-color-{{ $index['no'] }}" aria-expanded="true" aria-controls="accordion-color-{{ $index['no'] }}">
@@ -22,7 +22,8 @@
                                 @endforeach
                             @else --}}
                                 @foreach ($subCategories as $item)
-                                <a href="/{{ $item }}" class="{{ request()->is($item) ? 'active' : '' }} p-2 text-sm font-medium hover:bg-primary hover:text-white active:bg-primary active:text-white">{{ $item }}</a>
+                                {{-- iki ngko ganti /categoryName/subCategoryName --}}
+                                <a href="/atasan/{{ $item }}" class="{{ request()->is($item) ? 'active' : '' }} p-2 text-sm font-medium hover:bg-primary hover:text-white active:bg-primary active:text-white">{{ $item }}</a>
                                 @endforeach
                             @endif
                         </p>
