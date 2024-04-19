@@ -19,12 +19,12 @@
       <div id="accordion-kategori" class="hidden w-full" aria-labelledby="accordion-flush-kategori">
         <div>
           <p class="mb-3 mt-1 text-white flex flex-col">
-            <a href="#" class="py-2 text-xs">Baby & Kids</a>
-            <a href="#" class="py-2 text-xs">Set</a>
-            <a href="#" class="py-2 text-xs">Atasan</a>
-            <a href="#" class="py-2 text-xs">Muslim</a>
-            <a href="#" class="py-2 text-xs">Aksesoris</a>
-            <a href="#" class="py-2 text-xs">Lainnya</a>
+            <a href="#" wire:navigate class="py-2 text-xs">Baby & Kids</a>
+            <a href="#" wire:navigate class="py-2 text-xs">Set</a>
+            <a href="/atasan" wire:navigate class="py-2 text-xs">Atasan</a>
+            <a href="#" wire:navigate class="py-2 text-xs">Muslim</a>
+            <a href="#" wire:navigate class="py-2 text-xs">Aksesoris</a>
+            <a href="#" wire:navigate class="py-2 text-xs">Lainnya</a>
           </p>
         </div>
       </div>
@@ -102,7 +102,7 @@
       <h4 class="font-semibold text-xl">Kategori</h4>
       <a href="#" wire:navigate class="link link-hover">Baby & Kids</a>
       <a href="#" wire:navigate class="link link-hover">Set</a>
-      <a href="#" wire:navigate class="link link-hover">Atasan</a>
+      <a href="/atasan" wire:navigate class="link link-hover">Atasan</a>
       <a href="#" wire:navigate class="link link-hover">Muslim</a>
       <a href="#" wire:navigate class="link link-hover">Aksesoris</a>
       <a href="#" wire:navigate class="link link-hover">Lainnya</a>
