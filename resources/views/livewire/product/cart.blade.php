@@ -30,7 +30,7 @@
             </a>
             <div class="flex flex-col ml-3 w-full">
                 {{-- TODO: change real product link --}}
-                <a href="/product/aaa" wire:navigate class="text-sm mb-3">{{ $item['name'] }}</a>
+                <a href="/product/{{ $item['product_id'] }}" wire:navigate class="text-sm mb-3">{{ $item['name'] }}</a>
                 <div class="flex flex-row">
                     <div class="flex flex-col grow">
                         {{-- size --}}
@@ -41,9 +41,19 @@
                     </div>
                     <div class="flex flex-row">
                         {{-- kuantitas --}}
-                        <button wire:click="reduceQty('{{ $item['product_id'] . '-' . $item['size'] }}')" class="btn btn-sm text-sm font-medium px-3 rounded-none shadow-none">-</button>
+                        <button
+                            @if($item['qty'] > 1)
+                                wire:click="reduceQty('{{ $item['product_id'] . '-' . $item['size'] }}')"
+                            @endif
+                            class="btn btn-sm text-sm font-medium px-3 rounded-none shadow-none"
+                            >-</button>
                         <input type="text" value="{{ $item['qty'] }}" class="w-6 px-0 h-8 text-xs text-center border-none bg-gray-200" disabled>
-                        <button wire:click="addQty('{{ $item['product_id'] . '-' . $item['size'] }}')" class="btn btn-sm text-sm font-medium px-3 rounded-none shadow-none">+</button>
+                        <button
+                            @if($item['qty'] != $item['stock'])
+                                wire:click="addQty('{{ $item['product_id'] . '-' . $item['size'] }}')"
+                            @endif
+                            class="btn btn-sm text-sm font-medium px-3 rounded-none shadow-none"
+                        >+</button>
             
                         {{-- hapus produk dari keranjang --}}
                         <button wire:click="removeItem('{{ $item['product_id'] . '-' . $item['size'] }}')" class="btn btn-sm bg-red-700 hover:bg-red-800 text-white rounded-none shadow-none ml-1">

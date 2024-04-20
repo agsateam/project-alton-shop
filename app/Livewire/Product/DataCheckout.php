@@ -11,8 +11,13 @@ class DataCheckout extends Component
     public $size = '';
     public $mainImage;
 
+    public $showAlert = false;
+
     public function render()
     {
+        $this->product['sizes'] = unserialize($this->product['sizes']);
+        $this->product['stock'] = unserialize($this->product['stock']);
+
         if ($this->size == '') {
             $this->changeSize($this->product['sizes'][0]);
         }
@@ -44,13 +49,20 @@ class DataCheckout extends Component
     {
         // define data product yg akan ditambahkan ke cart
         $cartProductID = $this->product['product_id'] . '-' . $this->size;
+
+        if ($this->cannotAddToCart($cartProductID)) {
+            $this->showAlert = true;
+            return;
+        }
+
+        $product = unserialize($this->product['stock']);
         $productToAdd = [
             "product_id" => $this->product['product_id'],
             "photo" => $this->mainImage,
             "name" => $this->product['name'],
             "size" => $this->size,
             "price" => $this->product['price'],
-            "stock" => $this->product['stock'][$this->size],
+            "stock" => $product[$this->size],
             "qty" => $this->quantity
         ];
 
@@ -72,5 +84,25 @@ class DataCheckout extends Component
 
         // reset qty value
         $this->quantity = 1;
+    }
+
+    private function cannotAddToCart($id)
+    {
+        $cart = session()->get('cart');
+
+        if (array_key_exists($id, $cart)) {
+            if ($cart[$id]['stock'] == $cart[$id]['qty']) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        return false;
+    }
+
+    public function closeAlert()
+    {
+        $this->showAlert = false;
     }
 }
