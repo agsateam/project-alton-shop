@@ -1,9 +1,15 @@
 <x-landing-layout>
-    <x-master.categoryLayout :accordions="$accordion" :subCategories="$subCategory" :products="$products">
+    <x-master.categoryLayout :accordions="$accordion" :subCategories="$subCategory" :products="$products" :categoryName="$categoryName">
 
-        <h1 class="text-3xl lg:text-5xl mb-5">
-            {{ $categoryName }}
-        </h1>
+        <span class="flex flex-row">
+            <h1 class="text-3xl lg:text-5xl mb-5">
+                {{ $categoryName }}
+            </h1>
+            <div class="w-full text-right mt-3 block md:hidden">
+                <!-- drawer init and toggle -->
+                <a wire:click class="px-4 py-2 rounded-sm bg-primary text-white cursor-pointer" data-drawer-target="drawer-cart-filter" data-drawer-show="drawer-cart-filter" data-drawer-placement="right" aria-controls="drawer-cart-filter">Filter</a>
+            </div>
+        </span>
 
         {{-- content category --}}
         <div class="scroll-smooth">
@@ -40,8 +46,8 @@
             {{-- End Of Cards Products --}}
         </div>
         {{-- end content category --}}
-        
     </x-master.categoryLayout>
+    @livewire('category.sidebar')
 
     <script>
         const checkbox = document.querySelectorAll('input[type="checkbox"]');

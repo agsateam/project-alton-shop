@@ -88,3 +88,4 @@ $menu = ['Baby & Kids','Set','Atasan','Muslim','Aksesoris','Lainnya'];
 
 {{-- Cart Drawer --}}
 @livewire('product.cart')
+@livewire('category.sidebar')

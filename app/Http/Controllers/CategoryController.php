@@ -188,6 +188,7 @@ class CategoryController extends Controller
             ]
         ];
 
+        $categoryName = "Atasan"; // iki mngko ngeget dek db
         $subCategory = ['flanel', 'katun', 'sutra', 'rayon', 'spandek', 'kaos', 'kain', 'bahan', 'kemeja'];
 
         $product = [
@@ -341,6 +342,7 @@ class CategoryController extends Controller
         // dd($subCategories);
 
         return view('category.subCategory', [
+            'categoryName' => $categoryName,
             'accordion' => $accordion,
             'subCategory' => $subCategory,
             'products' => $product,
