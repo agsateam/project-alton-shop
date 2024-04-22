@@ -34,9 +34,9 @@
           </div>
         </div>
       </div>
-      <div class="flex flex com w-full my-8">
+      <div class="flex w-full my-8">
         <div class="shadow-xl h-full w-full px-2 py-1 rounded-xl">
-          <ul class="flex flex-wrap border-b-2 border-gray-200 w-full justify-around text-md font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+          <ul class="flex flex-row overflow-auto border-b-2 border-gray-200 w-full justify-around text-md font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
             <li role="presentation">
                 <button class="inline-block p-4 hover:border-b-2 text-primary font-semibold hover:border-gray-300" id="all-tab" data-tabs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="false">All</button>
             </li>

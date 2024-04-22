@@ -15,16 +15,13 @@ Route::get('/tos', [TosController::class, 'index']);
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index']);
 Route::get('/panduan', [PanduanController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
-Route::get('/riwayat-pribadi', [AccountController::class, 'index']);
 
 Route::get('/product/{id?}', [ProductController::class, 'index']);
 
 Route::get('/checkout', [CheckoutController::class, 'index']);
 // Route::post('/checkout', [CheckoutController::class, 'createTransaction']);
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::get('/dashboard', [AccountController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])

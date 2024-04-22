@@ -3,10 +3,6 @@ use App\Models\WebConfig;
 $theme = WebConfig::first()->theme;
 ?>
 
-@props([
-    'page' => 'default'
-])
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -34,19 +30,12 @@ $theme = WebConfig::first()->theme;
     </head>
     <body data-theme="{{ $theme }}" class="antialiased font-sans">
         
-        @if ($page == 'default')    
-            <header class="sticky top-0 z-50">
-                <x-home.account/>
-            </header>
-            <main class="relative">
-                {{ $slot }}
-            </main>
-            <footer>
-                <x-home.footer_section/>
-            </footer>
-        @else
+        <header class="sticky top-0 z-50">
+            <x-home.account/>
+        </header>
+        <main class="relative">
             {{ $slot }}
-        @endif
+        </main>
 
         @livewireScripts
     </body>
