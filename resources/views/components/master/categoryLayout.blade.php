@@ -22,7 +22,7 @@
                                 @foreach ($subCategories as $item)
                                 {{-- iki ngko ganti /categoryName/subCategoryName --}}
                                 {{-- @dump(request()->fullUrlIs(url('/'. $categoryName . '/' . $item))) --}}
-                                <a href="/{{ $categoryName }}/{{ $item }}" class="{{ request()->getPathInfo() == '/'. $categoryName . '/' . $item ? 'bg-primary text-white' : 'text-black' }} p-2 text-sm font-medium hover:bg-primary hover:text-white active:bg-primary active:text-white">{{ $item }}</a>
+                                <a href="/category/{{ $categoryName }}/{{ $item }}" class="{{ request()->getPathInfo() == '/category/'. $categoryName . '/' . $item ? 'bg-primary text-white' : 'text-black' }} p-2 text-sm font-medium hover:bg-primary hover:text-white active:bg-primary active:text-white">{{ $item }}</a>
                                 @endforeach
                             @endif
                         </p>
@@ -30,7 +30,7 @@
                 </div>
             @endforeach
             <button type="button" class="flex items-center justify-between w-full p-3 font-medium border-black text-black border-b" data-accordion-target="#accordion-color" aria-expanded="true" aria-controls="accordion-color">
-            <span>Rentang Harga</span>
+            <span>Filter</span>
             <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
             </svg>

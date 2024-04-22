@@ -19,8 +19,8 @@ Route::get('/panduan', [PanduanController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
 
 // Category
-Route::get('/{categorySlug?}', [CategoryController::class, 'index']);
-Route::get('/{categorySlug}/{subSlug?}', [CategoryController::class, 'subCategory']);
+Route::get('/category/{categorySlug?}', [CategoryController::class, 'index']);
+Route::get('/category/{categorySlug}/{subSlug?}', [CategoryController::class, 'subCategory']);
 
 // Product
 Route::get('/product/{id?}', [ProductController::class, 'index']);

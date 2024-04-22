@@ -88,4 +88,7 @@ $menu = ['Baby & Kids','Set','Atasan','Muslim','Aksesoris','Lainnya'];
 
 {{-- Cart Drawer --}}
 @livewire('product.cart')
-@livewire('category.sidebar')
+
+@if(Illuminate\Support\Str::contains(request()->getPathInfo(), ['category']))
+  @livewire('category.sidebar')
+@endif

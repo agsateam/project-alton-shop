@@ -47,7 +47,6 @@
         </div>
         {{-- end content category --}}
     </x-master.categoryLayout>
-    @livewire('category.sidebar')
 
     <script>
         const checkbox = document.querySelectorAll('input[type="checkbox"]');
