@@ -5,7 +5,9 @@
       <div class="flex md:flex-wrap md:-m-4 justify-between">
         <div class="p-2 w-1/4 md:flex md:flex-wrap">
           <div class="relative h-20 w-34 md:h-32 md:w-52 border-primary shadow-lg px-2 py-1 md:px-4 md:py-6 rounded-lg ">
-            <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 md:mr-4 h-6 w-6 md:h-12 md:w-12 absolute right-0 top-1/4 md:top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-sky-500 mr-2 md:mr-4 h-6 w-6 md:h-12 md:w-12 absolute right-0 top-1/4 md:top-1/2 transform -translate-y-1/2" viewBox="0 0 128 128">
+              <path d="M15,109.8l48,17c0,0,0,0,0,0c0.1,0,0.2,0.1,0.3,0.1c0.2,0.1,0.5,0.1,0.7,0.1c0.2,0,0.3,0,0.5,0c0,0,0,0,0,0c0,0,0,0,0.1,0 c0.1,0,0.3-0.1,0.4-0.1c0,0,0,0,0,0l48-17c1.2-0.4,2-1.6,2-2.8V73.4l10-3.5c0.8-0.3,1.5-1,1.8-1.8s0.2-1.8-0.3-2.6l-12-20 c0,0-0.1-0.1-0.1-0.1c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0-0.1c-0.1-0.1-0.1-0.1-0.2-0.2 c0,0-0.1-0.1-0.1-0.1c0,0-0.1-0.1-0.1-0.1c0,0-0.1,0-0.1,0c0,0-0.1-0.1-0.1-0.1c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.1-0.1-0.2-0.1 c0,0,0,0,0,0c0,0,0,0,0,0l-48-17c0,0,0,0-0.1,0c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c-0.1,0-0.1,0-0.2,0c0,0,0,0,0,0c0,0,0,0,0,0 c-0.1,0-0.1,0-0.2,0c-0.1,0-0.1,0-0.2,0c-0.1,0-0.2,0-0.4,0c-0.1,0-0.1,0-0.2,0c-0.2,0-0.4,0.1-0.5,0.1l-48,17 c-0.2,0.1-0.3,0.1-0.5,0.2c0,0-0.1,0.1-0.1,0.1c-0.1,0.1-0.2,0.1-0.3,0.2c0,0-0.1,0.1-0.1,0.1c-0.1,0.1-0.2,0.1-0.2,0.2 c0,0-0.1,0.1-0.1,0.1c-0.1,0.1-0.1,0.2-0.2,0.2c0,0,0,0.1-0.1,0.1l-12,20c-0.7,1.1-0.6,2.5,0.2,3.4C2.3,69.6,3.1,70,4,70 c0.3,0,0.7-0.1,1-0.2l8-2.8v40C13,108.3,13.8,109.4,15,109.8z M119.5,65.4l-42.2,15l-8.9-14.8l42.2-15L119.5,65.4z M67,34.2L103,47 L67,59.8V34.2z M67,74.8l6.4,10.7C74,86.5,75,87,76,87c0.3,0,0.7-0.1,1-0.2l32-11.3v29.4l-42,14.9V74.8z M19,51.2l42,14.9v53.6 l-42-14.9V51.2z"></path>
+          </svg>
             <h2 class="title-font font-bold text-2xl md:text-5xl">7</h2>
             <span class="text-xs ml-2 mb-1 md:ml-4 md:mb-3 text-slate-200 md:text-md md:text-xl leading-relaxed absolute bottom-0 left-0">Pending</p>
           </div>
@@ -53,7 +55,7 @@
                 <button class="inline-block p-4 hover:border-b-2 text-primary font-semibold hover:border-gray-300" id="canceled-tab" data-tabs-target="#canceled" type="button" role="tab" aria-controls="canceled" aria-selected="false">Canceled</button>
             </li>
           </ul>
-          <div id="default-tab-content">
+          <div class="" id="default-tab-content">
             
           </div>
         </div>
