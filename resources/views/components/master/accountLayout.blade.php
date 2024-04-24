@@ -1,6 +1,5 @@
 <div class="md:flex md:flex-row md:space-x-4 p-1 md:p-5 mt-2">
   <div class="relative mt-0 md:mt-5 w-full md:w-1/4 md:h-screen md:pl-4">
-    <h1 class="md:hidden font-bold ml-2 py-3 text-3xl">Riwayat Pribadi</h1>
     <div class="hidden md:flex card w-50 bg-base-100 shadow-md relative border border-gray-300 items-center">
       <div class="w-fit relative group/item mt-5">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNWQQdRQ1JIuiKNvTqBukJH4WugmOWF7A_-w&s" title="Foto Profil" alt="Photo" class="rounded-full w-36 h-36"/>
@@ -23,8 +22,7 @@
       <span class="py-5 font-semibold text-lg">{{ auth()->user()->name }}</span>
     </div>
     <div class="hidden md:flex card shadow-md mt-5"><x-sidebar.accountButton href="/dashboard" wire:navigate>Riwayat Transaksi</x-sidebar.accountButton></div>
-    <div class="hidden md:flex card shadow-md mt-1"><x-sidebar.accountButton href="/ubah-password" wire:navigate>Ubah Kata Sandi</x-sidebar.accountButton></div>
-    <div class="hidden md:flex card shadow-md mt-1"><x-sidebar.accountButton href="/info-pribadi" wire:navigate>Informasi Pribadi</x-sidebar.accountButton></div>
+    <div class="hidden md:flex card shadow-md mt-1"><x-sidebar.accountButton href="/info-pribadi" wire:navigate>Profil</x-sidebar.accountButton></div>
     <div class="hidden md:flex card shadow-md mt-5"><x-sidebar.accountButton href="/logout" state="outline" wire:navigate>Logout</x-sidebar.accountButton></div>
   </div>
   <div class="flex flex-col w-full md:flex-row md:p-2 mt-2">
