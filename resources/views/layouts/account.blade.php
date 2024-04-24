@@ -31,7 +31,7 @@ $theme = WebConfig::first()->theme;
     <body data-theme="{{ $theme }}" class="antialiased font-sans">
         
         <header class="sticky top-0 z-50">
-            <x-home.account/>
+            <x-account.navbar/>
         </header>
         <main class="relative">
             {{ $slot }}
