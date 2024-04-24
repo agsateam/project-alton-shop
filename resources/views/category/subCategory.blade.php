@@ -1,15 +1,25 @@
 <x-landing-layout>
-    <x-master.categoryLayout :accordions="$accordion" :subCategories="$subCategory" :products="$products" :categoryName="$categoryName">
+    <x-master.categoryLayout :subCategories="$subCategory" :products="$products" :category="$category">
 
         <span class="flex flex-row">
             <h1 class="text-3xl lg:text-5xl mb-5">
-                {{ $subCategory[0] }}
+                @foreach ($subCategories as $subcategory)
+                    @if (request()->getPathInfo() == '/category/'. $categories['slug'])
+                        {{ $categories['categoryName'] }}
+                    @endif
+                @endforeach
                 <div class="w-max text-left">
                     <nav aria-label="breadcrumb">
                       <ol class="flex w-full flex-wrap items-center rounded-md bg-blue-gray-50 bg-opacity-60 mt-2">
                         <li class="flex cursor-pointer items-center font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased transition-colors duration-300 hover:text-primary">
                           <a class="opacity-60" href="/category/atasan">
-                            <span>{{ $categoryName }}</span>
+                            <span>
+                                @foreach ($category as $categories)
+                                    @if (request()->getPathInfo() == '/category/'. $categories['slug'])
+                                        {{ $categories['categoryName'] }}
+                                    @endif
+                                @endforeach
+                            </span>
                           </a>
                           <span class="pointer-events-none mx-2 select-none font-sans text-sm font-normal leading-normal text-blue-gray-500 antialiased">
                             /

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\subCategory;
+
 class CategoryController extends Controller
 {
     public function index($slug = null)
@@ -10,19 +13,9 @@ class CategoryController extends Controller
             return redirect('/');
         }
 
-        $accordion = [
-            // [
-            //     'no' => '1',
-            //     'name' => 'Category',
-            // ],
-            [
-                'no' => '2',
-                'name' => 'Sub Category',
-            ]
-        ];
-
-        $categoryName = "Atasan"; // iki mngko ngeget dek db
-        $subCategory = ['flanel', 'katun', 'sutra', 'rayon', 'spandek', 'kaos', 'kain', 'bahan', 'kemeja'];
+        $category = category::all();
+        $subCategory = subCategory::all();
+        dd($category->first()->subCategory()->get(), $subCategory);
 
         $product = [
             [
@@ -168,28 +161,20 @@ class CategoryController extends Controller
         ];
 
         return view('category.category', [
-            'categoryName' => $categoryName,
-            'accordion' => $accordion,
+            'category' => $category,
             'subCategory' => $subCategory,
             'products' => $product,
         ]);
     }
 
-    public function subCategory()
+    public function subCategory($slug = null)
     {
-        $accordion = [
-            // [
-            //     'no' => '1',
-            //     'name' => 'Category',
-            // ],
-            [
-                'no' => '2',
-                'name' => 'Sub Category',
-            ]
-        ];
+        if ($slug == null) {
+            return redirect('/');
+        }
 
-        $categoryName = "Atasan"; // iki mngko ngeget dek db
-        $subCategory = ['flanel', 'katun', 'sutra', 'rayon', 'spandek', 'kaos', 'kain', 'bahan', 'kemeja'];
+        $category = category::all();
+        $subCategory = subCategory::where('slug', $slug)->get();
 
         $product = [
             [
@@ -342,8 +327,7 @@ class CategoryController extends Controller
         // dd($subCategories);
 
         return view('category.subCategory', [
-            'categoryName' => $categoryName,
-            'accordion' => $accordion,
+            'category' => $category,
             'subCategory' => $subCategory,
             'products' => $product,
             'subCategories' => $subCategories,

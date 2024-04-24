@@ -1,9 +1,13 @@
 <x-landing-layout>
-    <x-master.categoryLayout :accordions="$accordion" :subCategories="$subCategory" :products="$products" :categoryName="$categoryName">
+    <x-master.categoryLayout :subCategories="$subCategory" :products="$products" :category="$category">
 
         <span class="flex flex-row">
             <h1 class="text-3xl lg:text-5xl mb-5">
-                {{ $categoryName }}
+                @foreach ($category as $categories)
+                    @if (request()->getPathInfo() == '/category/'. $categories['slug'])
+                        {{ $categories['categoryName'] }}
+                    @endif
+                @endforeach
             </h1>
             <div class="w-full text-right mt-3 block md:hidden">
                 <!-- drawer init and toggle -->

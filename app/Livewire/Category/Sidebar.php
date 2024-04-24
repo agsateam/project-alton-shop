@@ -7,10 +7,10 @@ use Livewire\Component;
 class Sidebar extends Component
 {
     public $accordions = [
-        // [
-        //     'no' => '1',
-        //     'name' => 'Category',
-        // ],
+        [
+            'no' => '1',
+            'name' => 'Category',
+        ],
         [
             'no' => '2',
             'name' => 'Sub Category',
