@@ -48,9 +48,6 @@ function responsiveSlidePerView() {
     swiper.update();
 }
 
-// window.onload = responsiveSlidePerView;
-window.addEventListener("resize", responsiveSlidePerView); // Update on window resize
-
 document.addEventListener("livewire:navigated", () => {
     initFlowbite();
 
@@ -59,6 +56,7 @@ document.addEventListener("livewire:navigated", () => {
     // on landing page
     if(path == '/'){
         responsiveSlidePerView();
+        window.addEventListener("resize", responsiveSlidePerView); // Update on window resize
     }
     
     // on checkout page
