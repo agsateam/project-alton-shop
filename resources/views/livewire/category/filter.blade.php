@@ -23,7 +23,9 @@
 <script>
     // Category Filter Harga
     function formatRupiah(thisDocument, id){
-        document.getElementById(id).innerHTML = 'Rp ' + toRupiah(thisDocument.value);
+        document.querySelectorAll("#" + id).forEach(element => {
+            element.innerHTML = 'Rp ' + toRupiah(thisDocument.value);
+        });
     };
 
     function toRupiah(angka){

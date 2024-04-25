@@ -58,3 +58,5 @@ $slug = explode("/", request()->getPathInfo());
         </div>
     </div>
 </div>
+
+@livewire('category.sidebar', ['products' => $products, 'categories' => $categories, 'slug' => $slug])

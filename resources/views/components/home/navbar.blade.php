@@ -74,7 +74,3 @@ $categories = App\Models\Category::limit(5)->get();
 
 {{-- Cart Drawer --}}
 @livewire('product.cart')
-
-@if(Illuminate\Support\Str::contains(request()->getPathInfo(), ['category']))
-  @livewire('category.sidebar')
-@endif
