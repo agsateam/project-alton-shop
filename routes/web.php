@@ -10,6 +10,7 @@ use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\UbahSandiController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -31,6 +32,7 @@ Route::get('/checkout', [CheckoutController::class, 'index']);
 // Route::post('/checkout', [CheckoutController::class, 'createTransaction']);
 
 Route::get('/dashboard', [AccountController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/ubah-sandi', [UbahSandiController::class, 'index'])->middleware(['auth'])->name('ubahSandi');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
