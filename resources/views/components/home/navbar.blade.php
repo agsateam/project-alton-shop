@@ -1,5 +1,5 @@
 <?php 
-$menu = ['Baby & Kids','Set','Atasan','Muslim','Aksesoris','Lainnya'];
+$categories = App\Models\Category::limit(5)->get();
 ?>
 
 <div class="navbar flex py-0 bg-primary text-white shadow-lg">
@@ -10,27 +10,14 @@ $menu = ['Baby & Kids','Set','Atasan','Muslim','Aksesoris','Lainnya'];
       </div>
       {{-- navbar untuk responsif nanti --}}
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white text-black rounded-box w-52">
+        @foreach ($categories as $item)
         <li>
-          <a>Baby & Kids</a>
+          <a href="/category/{{ $item['slug'] }}" wire:navigate>{{ $item['categoryName'] }}</a>
           <ul class="p-2">
             <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
           </ul>
         </li>
-        <li>
-          <a>Atasan</a>
-          <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
-        <li>
-          <a>Aksesoris</a>
-          <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
+        @endforeach
         <li><a>Lainnya</a></li>
       </ul>
       {{-- end --}}
@@ -38,16 +25,15 @@ $menu = ['Baby & Kids','Set','Atasan','Muslim','Aksesoris','Lainnya'];
     <a href="/" wire:navigate class="font-bold text-xl lg:ml-5 sm:ml-3">ALTON</a>
     <div class="ml-5 hidden lg:flex">
       <ul class="menu menu-horizontal">
-        @foreach ($menu as $item)
+        @foreach ($categories as $item)
         <div class="dropdown dropdown-hover">
-          <div tabindex="0" role="button" class="py-3 m-1 mx-3">{{ $item }}</div>
+          <div tabindex="0" role="button" class="py-3 m-1 mx-3">{{ $item['categoryName'] }}</div>
           <div tabindex="0" class="dropdown-content z-[1] card card-compact rounded-none w-96 shadow bg-white text-black">
             <div class="card-body">
               <div class="flex flex-wrap">
-                <a href="#1" class="p-5 hover:font-bold" wire:navigate>SubMenu 1</a>
-                <a href="#2" class="p-5 hover:font-bold" wire:navigate>SubMenu 2</a>
-                <a href="#3" class="p-5 hover:font-bold" wire:navigate>SubMenu 3</a>
-                <a href="#4" class="p-5 hover:font-bold" wire:navigate>SubMenu 4</a>
+                @foreach ($item->subCategory()->get() as $item)
+                <a href="#1" class="p-5 hover:font-bold" wire:navigate>{{ $item['subName'] }}</a>
+                @endforeach
               </div>
             </div>
           </div>

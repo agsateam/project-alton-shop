@@ -100,11 +100,10 @@
 
     <nav class="pl-3 hidden md:flex md:flex-col">
       <h4 class="font-semibold text-xl">Kategori</h4>
-      <a href="/category/baby-kids" wire:navigate class="link link-hover">Baby & Kids</a>
-      <a href="/category/set" wire:navigate class="link link-hover">Set</a>
-      <a href="/category/atasan" wire:navigate class="link link-hover">Atasan</a>
-      <a href="/category/muslim" wire:navigate class="link link-hover">Muslim</a>
-      <a href="/category/aksesoris" wire:navigate class="link link-hover">Aksesoris</a>
+      <?php $categoryList = App\Models\Category::limit(5)->get() ?>
+      @foreach ($categoryList as $item)
+      <a href="/category/{{ $item['slug'] }}" wire:navigate class="link link-hover">{{ $item['categoryName'] }}</a>
+      @endforeach
       <a href="#" wire:navigate class="link link-hover">Lainnya</a>
     </nav> 
     <nav class="hidden md:flex md:flex-col">
