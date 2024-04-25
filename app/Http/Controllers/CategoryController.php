@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\subCategory;
+use App\Models\SubCategory;
+use App\Models\Product;
 
 class CategoryController extends Controller
 {
@@ -13,324 +14,37 @@ class CategoryController extends Controller
             return redirect('/');
         }
 
-        $category = category::all();
-        $subCategory = subCategory::all();
-        dd($category->first()->subCategory()->get(), $subCategory);
-
-        $product = [
-            [
-                'sub_kategori' => 'flanel',
-                'kategori' => 'baby & kids',
-                'name' => 'Product 1',
-                'price' => 100000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'flanel',
-                'kategori' => 'baby & kids',
-                'name' => 'Product 2',
-                'price' => 150000,
-                'rating' => 3,
-            ],
-            [
-                'sub_kategori' => 'flanel',
-                'kategori' => 'baby & kids',
-                'name' => 'Product 3',
-                'price' => 120000,
-                'rating' => 5,
-            ],
-            [
-                'sub_kategori' => 'flanel',
-                'kategori' => 'baby & kids',
-                'name' => 'Product 4',
-                'price' => 80000,
-                'rating' => 2,
-            ],
-            [
-                'sub_kategori' => 'katun',
-                'kategori' => 'set',
-                'name' => 'Product 5',
-                'price' => 200000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'katun',
-                'kategori' => 'set',
-                'name' => 'Product 6',
-                'price' => 90000,
-                'rating' => 3,
-            ],
-            [
-                'sub_kategori' => 'katun',
-                'kategori' => 'set',
-                'name' => 'Product 7',
-                'price' => 110000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'katun',
-                'kategori' => 'set',
-                'name' => 'Product 8',
-                'price' => 130000,
-                'rating' => 5,
-            ],
-            [
-                'sub_kategori' => 'sutra',
-                'kategori' => 'atasan',
-                'name' => 'Product 9',
-                'price' => 70000,
-                'rating' => 3,
-            ],
-            [
-                'sub_kategori' => 'sutra',
-                'kategori' => 'atasan',
-                'name' => 'Product 10',
-                'price' => 180000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'sutra',
-                'kategori' => 'atasan',
-                'name' => 'Product 11',
-                'price' => 100000,
-                'rating' => 5,
-            ],
-            [
-                'sub_kategori' => 'sutra',
-                'kategori' => 'atasan',
-                'name' => 'Product 12',
-                'price' => 160000,
-                'rating' => 3,
-            ],
-            [
-                'sub_kategori' => 'rayon',
-                'kategori' => 'muslim',
-                'name' => 'Product 13',
-                'price' => 140000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'rayon',
-                'kategori' => 'muslim',
-                'name' => 'Product 14',
-                'price' => 190000,
-                'rating' => 2,
-            ],
-            [
-                'sub_kategori' => 'rayon',
-                'kategori' => 'muslim',
-                'name' => 'Product 15',
-                'price' => 170000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'rayon',
-                'kategori' => 'muslim',
-                'name' => 'Product 16',
-                'price' => 120000,
-                'rating' => 3,
-            ],
-            [
-                'sub_kategori' => 'spandek',
-                'kategori' => 'aksesoris',
-                'name' => 'Product 17',
-                'price' => 130000,
-                'rating' => 5,
-            ],
-            [
-                'sub_kategori' => 'spandek',
-                'kategori' => 'aksesoris',
-                'name' => 'Product 18',
-                'price' => 100000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'spandek',
-                'kategori' => 'aksesoris',
-                'name' => 'Product 19',
-                'price' => 150000,
-                'rating' => 3,
-            ],
-            [
-                'sub_kategori' => 'spandek',
-                'kategori' => 'aksesoris',
-                'name' => 'Product 20',
-                'price' => 110000,
-                'rating' => 4,
-            ],
-        ];
+        $category = Category::all();
+        $categoryName = Category::where('slug', $slug)->first()->categoryName;
+        $products = Product::where('category', $slug)->get();
 
         return view('category.category', [
-            'category' => $category,
-            'subCategory' => $subCategory,
-            'products' => $product,
+            'categories' => $category,
+            'categoryName' => $categoryName,
+            'products' => $products,
         ]);
     }
 
-    public function subCategory($slug = null)
+    public function subCategory($slug = null, $subSlug = null)
     {
         if ($slug == null) {
             return redirect('/');
         }
 
-        $category = category::all();
-        $subCategory = subCategory::where('slug', $slug)->get();
-
-        $product = [
-            [
-                'sub_kategori' => 'flanel',
-                'kategori' => 'baby & kids',
-                'name' => 'Product 1',
-                'price' => 100000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'flanel',
-                'kategori' => 'baby & kids',
-                'name' => 'Product 2',
-                'price' => 150000,
-                'rating' => 3,
-            ],
-            [
-                'sub_kategori' => 'flanel',
-                'kategori' => 'baby & kids',
-                'name' => 'Product 3',
-                'price' => 120000,
-                'rating' => 5,
-            ],
-            [
-                'sub_kategori' => 'flanel',
-                'kategori' => 'baby & kids',
-                'name' => 'Product 4',
-                'price' => 80000,
-                'rating' => 2,
-            ],
-            [
-                'sub_kategori' => 'katun',
-                'kategori' => 'set',
-                'name' => 'Product 5',
-                'price' => 200000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'katun',
-                'kategori' => 'set',
-                'name' => 'Product 6',
-                'price' => 90000,
-                'rating' => 3,
-            ],
-            [
-                'sub_kategori' => 'katun',
-                'kategori' => 'set',
-                'name' => 'Product 7',
-                'price' => 110000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'katun',
-                'kategori' => 'set',
-                'name' => 'Product 8',
-                'price' => 130000,
-                'rating' => 5,
-            ],
-            [
-                'sub_kategori' => 'sutra',
-                'kategori' => 'atasan',
-                'name' => 'Product 9',
-                'price' => 70000,
-                'rating' => 3,
-            ],
-            [
-                'sub_kategori' => 'sutra',
-                'kategori' => 'atasan',
-                'name' => 'Product 10',
-                'price' => 180000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'sutra',
-                'kategori' => 'atasan',
-                'name' => 'Product 11',
-                'price' => 100000,
-                'rating' => 5,
-            ],
-            [
-                'sub_kategori' => 'sutra',
-                'kategori' => 'atasan',
-                'name' => 'Product 12',
-                'price' => 160000,
-                'rating' => 3,
-            ],
-            [
-                'sub_kategori' => 'rayon',
-                'kategori' => 'muslim',
-                'name' => 'Product 13',
-                'price' => 140000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'rayon',
-                'kategori' => 'muslim',
-                'name' => 'Product 14',
-                'price' => 190000,
-                'rating' => 2,
-            ],
-            [
-                'sub_kategori' => 'rayon',
-                'kategori' => 'muslim',
-                'name' => 'Product 15',
-                'price' => 170000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'rayon',
-                'kategori' => 'muslim',
-                'name' => 'Product 16',
-                'price' => 120000,
-                'rating' => 3,
-            ],
-            [
-                'sub_kategori' => 'spandek',
-                'kategori' => 'aksesoris',
-                'name' => 'Product 17',
-                'price' => 130000,
-                'rating' => 5,
-            ],
-            [
-                'sub_kategori' => 'spandek',
-                'kategori' => 'aksesoris',
-                'name' => 'Product 18',
-                'price' => 100000,
-                'rating' => 4,
-            ],
-            [
-                'sub_kategori' => 'spandek',
-                'kategori' => 'aksesoris',
-                'name' => 'Product 19',
-                'price' => 150000,
-                'rating' => 3,
-            ],
-            [
-                'sub_kategori' => 'spandek',
-                'kategori' => 'aksesoris',
-                'name' => 'Product 20',
-                'price' => 110000,
-                'rating' => 4,
-            ],
-        ];
-
-        foreach ($product as $value) {
-            if ($value['sub_kategori'] == 'flanel') {
-                $subCategories[] = $value;
-            }
+        if ($subSlug == null) {
+            return redirect('/category/' . $subSlug);
         }
-        // dd($subCategories);
+
+        $categories = Category::all();
+        $categoryName = Category::where('slug', $slug)->first()->categoryName;
+        $subCategoryName = SubCategory::where('slug', $subSlug)->first()->subName;
+        $products = Product::where('sub_category', $subSlug)->get();
 
         return view('category.subCategory', [
-            'category' => $category,
-            'subCategory' => $subCategory,
-            'products' => $product,
-            'subCategories' => $subCategories,
+            'categories' => $categories,
+            'categoryName' => $categoryName,
+            'subCategoryName' => $subCategoryName,
+            'products' => $products,
         ]);
     }
 }

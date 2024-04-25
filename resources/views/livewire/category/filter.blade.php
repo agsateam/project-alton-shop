@@ -11,11 +11,34 @@
         </div>
     </div>
     <p class="mb-2 text-black grid gap-2 grid-cols-7">
-        <input type="text" id="h-min" name="h-min" id="h-minimum" class="input rounded-none border-black input-primary col-span-3">
+        <input type="number" id="h-min" name="h-min" onchange="formatRupiah(event.target, 'h-min-show')" class="input rounded-none border-black input-primary col-span-3"/>
         <span class="text-center place-self-center">-</span>
-        <input type="text" id="h-max" name="h-max" id="h-maximum" class="input rounded-none border-black input-primary col-span-3">
+        <input type="number" id="h-max" name="h-max" onchange="formatRupiah(event.target, 'h-max-show')" class="input rounded-none border-black input-primary col-span-3"/>
     </p>
     <p class="mb-2 text-xs ps-2">
-        Menampilkan harga dari <span class="text-price">Rp. 0</span> - <span class="text-price">Rp. 0</span>
+        Menampilkan harga dari <span class="text-price" id="h-min-show">Rp. 0</span> - <span class="text-price" id="h-max-show">Rp. 0</span>
     </p>
 </div>
+
+<script>
+    // Category Filter Harga
+    function formatRupiah(thisDocument, id){
+        document.getElementById(id).innerHTML = 'Rp ' + toRupiah(thisDocument.value);
+    };
+
+    function toRupiah(angka){
+        var number_string   = angka.replace(/[^,\d]/g, '').toString(),
+        split               = number_string.split(','),
+        sisa                = split[0].length % 3,
+        rupiah              = split[0].substr(0, sisa),
+        ribuan              = split[0].substr(sisa).match(/\d{3}/gi);
+        
+        if (ribuan) {
+            separator = sisa ? '.' : '';
+            rupiah += separator + ribuan.join('.');
+        }
+
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        return rupiah;
+    }
+</script>

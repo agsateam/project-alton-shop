@@ -1,3 +1,7 @@
+<?php 
+$slug = explode("/", request()->getPathInfo());
+?>
+
 <div class="flex flex-col md:flex-row p-5 md:p-10 mt-5">
     <div class="md:w-[75%] grow">
         {{ $slot }}
@@ -26,8 +30,8 @@
                 <div id="accordion-color-category" class="hidden" aria-labelledby="accordion-color-master">
                     <div class="p-2 capitalize">
                         <p class="mb-2 text-black grid gap-3 grid-cols-2">
-                            @foreach ($category as $categories)
-                            <a href="/category/{{ $categories['slug'] }}" class="{{ request()->getPathInfo() == '/category/'. $categories['slug'] ? 'bg-primary text-white' : 'text-black' }} p-2 text-sm font-medium hover:bg-primary hover:text-white active:bg-primary active:text-white">{{ $categories['categoryName'] }}</a>
+                            @foreach ($categories as $category)
+                            <a href="/category/{{ $category['slug'] }}" class="{{ str_contains(request()->getPathInfo(), '/category/' . $category['slug']) ? 'text-secondary border border-primary' : 'text-black' }} p-2 text-sm font-medium hover:bg-primary hover:text-white active:bg-primary active:text-white">{{ $category['categoryName'] }}</a>
                             @endforeach
                         </p>
                     </div>
@@ -44,9 +48,8 @@
             <div id="accordion-color-subCategory" class="hidden" aria-labelledby="accordion-color-master">
                 <div class="p-2 capitalize">
                     <p class="mb-2 text-black grid gap-3 grid-cols-2">
-                        @foreach ($subCategories as $item)
-                        {{-- @dump(request()->fullUrlIs(url('/'. $category . '/' . $item))) --}}
-                        <a href="/category/{{ $item['categoryName'] }}/{{ $item['subName'] }}" class="{{ request()->getPathInfo() == '/category/'. $item['categoryName'] . '/' . $item['subName'] ? 'bg-primary text-white' : 'text-black' }} p-2 text-sm font-medium hover:bg-primary hover:text-white active:bg-primary active:text-white">{{ $item['subName'] }}</a>
+                        @foreach ($categories->where('slug', $slug[2])->first()->subCategory()->get() as $item)
+                        <a href="/category/{{ $slug[2] }}/{{ $item['slug'] }}" class="{{ request()->getPathInfo() == '/category/'. $slug[2] . '/' . $item['slug'] ? 'text-secondary border border-primary' : 'text-black' }} p-2 text-sm font-medium hover:bg-primary hover:text-white active:bg-primary active:text-white">{{ $item['subName'] }}</a>
                         @endforeach
                     </p>
                 </div>

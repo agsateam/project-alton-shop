@@ -31,7 +31,7 @@
                     </svg>
                 </button>
                 <ul id="dropdown-filter-price" class="py-2 space -y-2">
-                    @livewire('category.filter', ['products' => $products])
+                {{-- @livewire('category.filter', ['products' => $products]) --}}
             </li>
         </ul>
     </div>

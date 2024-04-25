@@ -23,6 +23,8 @@ return new class extends Migration
             $table->mediumText('description');
             $table->boolean('is_promo')->default(false);
             $table->string('promo_price')->default('0');
+            $table->string('category');
+            $table->string('sub_category');
             $table->timestamps();
         });
     }

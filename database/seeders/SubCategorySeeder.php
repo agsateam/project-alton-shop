@@ -18,52 +18,52 @@ class SubCategorySeeder extends Seeder
             [
                 'slug' => 'baby',
                 'category_id' => 1,
-                'subName' => 'baby'
+                'subName' => 'Baby'
             ],
             [
                 'slug' => 'kids',
                 'category_id' => 1,
-                'subName' => 'kids'
+                'subName' => 'Kids'
             ],
             [
                 'slug' => 'kain',
                 'category_id' => 2,
-                'subName' => 'kain'
+                'subName' => 'Kain'
             ],
             [
                 'slug' => 'katun',
                 'category_id' => 2,
-                'subName' => 'katun'
+                'subName' => 'Katun'
             ],
             [
-                'slug' => 'flanel',
+                'slug' => 'flannel',
                 'category_id' => 3,
-                'subName' => 'flanel'
+                'subName' => 'Flannel'
             ],
             [
                 'slug' => 'kemeja',
                 'category_id' => 3,
-                'subName' => 'kemeja'
+                'subName' => 'Kemeja'
             ],
             [
-                'slug' => 'kokoh',
+                'slug' => 'koko',
                 'category_id' => 4,
-                'subName' => 'kokoh'
+                'subName' => 'Koko'
             ],
             [
                 'slug' => 'mukena',
                 'category_id' => 4,
-                'subName' => 'mukena'
+                'subName' => 'Mukena'
             ],
             [
                 'slug' => 'jam-tangan',
                 'category_id' => 5,
-                'subName' => 'jam tangan'
+                'subName' => 'Jam Tangan'
             ],
             [
                 'slug' => 'kalung',
                 'category_id' => 5,
-                'subName' => 'kalung'
+                'subName' => 'Kalung'
             ],
         ]);
     }
