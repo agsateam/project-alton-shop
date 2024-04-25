@@ -10,13 +10,13 @@
             <label for="bordered-checkbox-2" class="w-full py-4 ms-2 text-sm font-medium cursor-pointer">Terlaris</label>
         </div>
     </div>
-    <p class="mb-2 text-black grid gap-2 grid-cols-7">
-        <input type="number" id="h-min" name="h-min" onchange="formatRupiah(event.target, 'h-min-show')" class="input rounded-none border-black input-primary col-span-3"/>
-        <span class="text-center place-self-center">-</span>
-        <input type="number" id="h-max" name="h-max" onchange="formatRupiah(event.target, 'h-max-show')" class="input rounded-none border-black input-primary col-span-3"/>
+    <p class="mb-2 text-black flex flex-row">
+        <input type="number" id="h-min" name="h-min" onchange="formatRupiah(event.target, 'h-min-show')" class="rounded-none border-black w-1/2"/>
+        <span class="px-2 place-self-center">-</span>
+        <input type="number" id="h-max" name="h-max" onchange="formatRupiah(event.target, 'h-max-show')" class="rounded-none border-black w-1/2"/>
     </p>
     <p class="mb-2 text-xs ps-2">
-        Menampilkan harga dari <span class="text-price" id="h-min-show">Rp. 0</span> - <span class="text-price" id="h-max-show">Rp. 0</span>
+        Menampilkan harga dari :<br/><span class="text-price" id="h-min-show">Rp. 0</span> - <span class="text-price" id="h-max-show">Rp. 0</span>
     </p>
 </div>
 
