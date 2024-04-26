@@ -6,19 +6,9 @@ use Livewire\Component;
 
 class Sidebar extends Component
 {
-    public $accordions = [
-        [
-            'no' => '1',
-            'name' => 'Category',
-        ],
-        [
-            'no' => '2',
-            'name' => 'Sub Category',
-        ]
-    ];
-    public $categoryName = "Atasan"; // iki mngko ngeget dek db
-    public $subCategories = ['flanel', 'katun', 'sutra', 'rayon', 'spandek', 'kaos', 'kain', 'bahan', 'kemeja'];
-    public $products = [];
+    public $products;
+    public $categories;
+    public $slug;
     public $isHideDrawer = true;
 
     public function render()

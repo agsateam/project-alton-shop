@@ -35,7 +35,7 @@ $slug = explode("/", request()->getPathInfo());
             </div>
         </span>
 
-        <x-category.products :products="$products"/>
+        @livewire('category.products', ['products' => $products])
 
     </x-master.categoryLayout>
 </x-landing-layout>
