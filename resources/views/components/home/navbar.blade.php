@@ -39,6 +39,7 @@ $categories = App\Models\Category::limit(5)->get();
           </div>
         </div>
         @endforeach
+        <div role="button" class="py-3 m-1 mx-3">Lainnya</div>
       </ul>
     </div>
   </div>

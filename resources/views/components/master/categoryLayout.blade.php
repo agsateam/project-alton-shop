@@ -16,7 +16,7 @@ $slug = explode("/", request()->getPathInfo());
                 </svg>
             </button>
             <div id="accordion-color" class="hidden" aria-labelledby="accordion-color-master">
-                @livewire('category.filter', ['products' => $products])
+                @livewire('category.filter')
             </div>
             {{-- end filter --}}
 

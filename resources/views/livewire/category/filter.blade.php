@@ -2,12 +2,12 @@
     <div class="mb-2">
         <!-- component -->
         <div class="flex items-center ps-4 hover:bg-primary hover:text-white">
-            <input id="bordered-checkbox-1" wire:click="check_terbaru" type="checkbox" name="bordered-checkbox" class="w-4 h-4 focus:ring-primary focus:ring-2 text-primary">
-            <label for="bordered-checkbox-1" class="w-full py-4 ms-2 text-sm font-medium cursor-pointer">Terbaru</label>
+            <input id="filter_terbaru" onclick="checkTerbaru(event.target)" wire:click="check_terbaru" @if($filter_terbaru) checked @endif type="checkbox" class="w-4 h-4 focus:ring-primary focus:ring-2 text-primary">
+            <label for="filter_terbaru" class="w-full py-4 ms-2 text-sm font-medium cursor-pointer">Terbaru</label>
         </div>
         <div class="flex items-center ps-4 hover:bg-primary hover:text-white">
-            <input id="bordered-checkbox-2" wire:click="check_terlaris" type="checkbox" name="bordered-checkbox" class="w-4 h-4 focus:ring-primary focus:ring-2 text-primary">
-            <label for="bordered-checkbox-2" class="w-full py-4 ms-2 text-sm font-medium cursor-pointer">Terlaris</label>
+            <input id="filter_terlaris" wire:click="check_terlaris" type="checkbox" class="w-4 h-4 focus:ring-primary focus:ring-2 text-primary">
+            <label for="filter_terlaris" class="w-full py-4 ms-2 text-sm font-medium cursor-pointer">Terlaris</label>
         </div>
     </div>
     <p class="mb-2 text-black flex flex-row">
@@ -21,6 +21,13 @@
 </div>
 
 <script>
+    // Category Filter Terbaru
+    function checkTerbaru(thisDocument){
+        document.querySelectorAll("#filter_terbaru").forEach(element => {
+            element.checked = thisDocument.checked;
+        });
+    };
+
     // Category Filter Harga
     function formatRupiah(thisDocument, id){
         document.querySelectorAll("#" + id).forEach(element => {

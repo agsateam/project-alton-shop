@@ -1,6 +1,6 @@
 <!-- drawer component -->
 <div id="drawer-cart-filter" class="fixed top-0 right-0 z-50 flex flex-col h-screen overflow-y-auto transition-transform {{ $isHideDrawer ? 'translate-x-full' : 'transform-none' }} w-3/4 sm:w-[500px] bg-white" tabindex="-1" aria-labelledby="drawer-cart-filter-label">    
-    <div class="overflow-auto pt-10 px-3 pb-60 sm:pb-3 sm:mb-44">
+    <div class="overflow-auto pt-10 px-3 sm:pb-10">
         <ul class="space-y-2 font-medium">
             <li>
                 <button type="button" class="flex items-center w-full p-2 border-b border-black text-base text-black transition duration-75 group bg-gray-50 hover:bg-primary hover:text-white" aria-controls="dropdown-filter-price" data-collapse-toggle="dropdown-filter-price" aria-expanded="true">
@@ -10,7 +10,7 @@
                     </svg>
                 </button>
                 <div id="dropdown-filter-price" class="py-2 space -y-2">
-                    @livewire('category.filter', ['products' => $products])
+                    @livewire('category.filter')
                 </div>
             </li>
             <li>
