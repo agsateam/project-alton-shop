@@ -6,8 +6,8 @@
             <label for="filter_terbaru" class="w-full py-3 ms-2 text-sm font-medium cursor-pointer">Terbaru</label>
         </div>
         <div class="flex items-center ps-4 hover:bg-primary hover:text-white">
-            <input id="filter_terlaris" wire:click="check_rating" type="checkbox" class="w-4 h-4 focus:ring-primary focus:ring-2 text-primary">
-            <label for="filter_terlaris" class="w-full py-3 ms-2 text-sm font-medium cursor-pointer">Rating tertinggi</label>
+            <input id="filter_rating" onclick="checkRating(event.target)" wire:click="check_rating" type="checkbox" class="w-4 h-4 focus:ring-primary focus:ring-2 text-primary">
+            <label for="filter_rating" class="w-full py-3 ms-2 text-sm font-medium cursor-pointer">Rating tertinggi</label>
         </div>
     </div>
     <p class="mb-2 text-black flex flex-row">
@@ -34,26 +34,10 @@
         });
     };
 
-    // Category Filter Harga
-    // function formatRupiah(thisDocument, id){
-    //     document.querySelectorAll("#" + id).forEach(element => {
-    //         element.innerHTML = 'Rp ' + toRupiah(thisDocument.value);
-    //     });
-    // };
-
-    // function toRupiah(angka){
-    //     var number_string   = angka.replace(/[^,\d]/g, '').toString(),
-    //     split               = number_string.split(','),
-    //     sisa                = split[0].length % 3,
-    //     rupiah              = split[0].substr(0, sisa),
-    //     ribuan              = split[0].substr(sisa).match(/\d{3}/gi);
-        
-    //     if (ribuan) {
-    //         separator = sisa ? '.' : '';
-    //         rupiah += separator + ribuan.join('.');
-    //     }
-
-    //     rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-    //     return rupiah;
-    // }
+    // Category Filter Rating
+    function checkRating(thisDocument){
+        document.querySelectorAll("#filter_rating").forEach(element => {
+            element.checked = thisDocument.checked;
+        });
+    };
 </script>
