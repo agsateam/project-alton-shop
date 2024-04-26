@@ -6,7 +6,7 @@ $slug = explode("/", request()->getPathInfo());
     <div class="md:w-[75%] grow">
         {{ $slot }}
     </div>
-    <div class="sticky top-[80px] mt-8 md:mt-0 w-full md:w-1/4 md:h-screen md:border-l-4 md:pl-4 md:border-gray-400 hidden md:block">
+    <div class="sticky top-[80px] mt-8 md:mt-0 w-full md:w-1/4 h-fit md:border-l-4 md:pl-4 md:border-gray-400 hidden md:block">
         <div id="accordion-color-master" data-accordion="open" data-active-classes="bg-primary text-white border-white dark:text-white" data-inactive-classes="text-black border-black">
             {{-- filter --}}
             <button type="button" class="flex items-center justify-between w-full p-3 font-medium border-black text-black border-b" data-accordion-target="#accordion-color" aria-expanded="true" aria-controls="accordion-color">
@@ -15,7 +15,7 @@ $slug = explode("/", request()->getPathInfo());
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
                 </svg>
             </button>
-            <div id="accordion-color" class="hidden" aria-labelledby="accordion-color-master">
+            <div id="accordion-color" class="hidden pb-5" aria-labelledby="accordion-color-master">
                 @livewire('category.filter')
             </div>
             {{-- end filter --}}
