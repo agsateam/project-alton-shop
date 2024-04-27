@@ -60,9 +60,9 @@ $categories = App\Models\Category::limit(5)->get();
 <!-- Search modal -->
 <div id="search_modal" tabindex="-1" aria-hidden="true" class="hidden fixed w-full h-[calc(100%-1rem)] max-h-full">
   <div class="absolute top-10 px-4 sm:px-2 w-full max-w-md">
-    <form method="post">
+    <form method="get" action="/search">
       <div class="flex flex-col sm:flex-row">
-        <input type="search" name="product" class="h-14 text-sm rounded-none grow focus:ring-primary focus:border-primary p-2.5" placeholder="Cari produk ..." required>
+        <input type="search" name="keyword" class="h-14 text-sm rounded-none grow focus:ring-primary focus:border-primary p-2.5" placeholder="Cari produk ..." required>
         <button type="submit" class="hidden sm:block btn btn-primary rounded-none h-14">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-white">
             <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clip-rule="evenodd" />

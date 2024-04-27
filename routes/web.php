@@ -10,6 +10,7 @@ use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\SearchController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -18,6 +19,9 @@ Route::get('/tos', [TosController::class, 'index']);
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index']);
 Route::get('/panduan', [PanduanController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
+
+// Search
+Route::get('/search', [SearchController::class, 'index']);
 
 // Category
 Route::get('/category/{categorySlug?}', [CategoryController::class, 'index']);
