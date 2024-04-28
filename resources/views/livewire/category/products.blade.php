@@ -14,9 +14,9 @@
         @endif
         @foreach($products as $product)
         <a href="/product/{{ $product['product_id'] }}" class="w-[48%] sm:w-[30%] lg:w-[23%] mr-0 md:mr-4" wire:navigate>
-            <div class="card_product drop-shadow-md mb-5">
+            <div class="card_product border border-gray-300 drop-shadow-md mb-5">
                 <img src="https://i.pinimg.com/564x/91/53/77/915377ae07969319fea5bc55d3422b0e.jpg" alt="Gambar Produk"/>
-                <div class="ket_product flex flex-col justify-around">
+                <div class="ket_product bg-white flex flex-col justify-around">
                     <div class="product_name text-md md:text-xl font-normal px-2">{{ $product['name'] }}</div>
                     <div class="ket2 flex flex-col md:flex-row justify-between">
                         {{-- Rating --}}
