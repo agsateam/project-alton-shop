@@ -1,53 +1,54 @@
 <?php 
 $categories = App\Models\Category::limit(5)->get();
+$allCategories = App\Models\Category::all();
 ?>
 
 <div class="navbar flex py-0 bg-primary text-white shadow-lg">
   <div class="grow">
-    <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-      </div>
-      {{-- navbar untuk responsif nanti --}}
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white text-black rounded-box w-52">
-        @foreach ($categories as $item)
-        <li>
-          <a href="/category/{{ $item['slug'] }}" wire:navigate>{{ $item['categoryName'] }}</a>
-          <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-          </ul>
-        </li>
-        @endforeach
-        <li><a>Lainnya</a></li>
-      </ul>
-      {{-- end --}}
+    {{-- button full category for mobile --}}
+    <div tabindex="0" role="button" class="btn btn-ghost md:hidden" data-drawer-target="drawer-full-category" data-drawer-show="drawer-full-category" data-drawer-placement="left" aria-controls="drawer-full-category">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
     </div>
+    {{-- logo/title --}}
     <a href="/" wire:navigate class="font-bold text-xl lg:ml-5 sm:ml-3">ALTON</a>
-    <div class="ml-5 hidden lg:flex">
-      <ul class="menu menu-horizontal">
+    {{-- category --}}
+    <div class="ml-5 hidden md:flex">
+      <div class="menu menu-horizontal p-0 m-0">
         @foreach ($categories as $item)
-        <div class="dropdown dropdown-hover">
-          <div tabindex="0" role="button" class="py-3 m-1 mx-3">{{ $item['categoryName'] }}</div>
-          <div tabindex="0" class="dropdown-content z-[1] card card-compact rounded-none w-96 shadow bg-white text-black">
+        <div class="dropdown dropdown-hover px-3 h-full place-content-center">
+          <a href="/category/{{ $item['slug'] }}" wire:navigate role="button" class="group py-5 transition-all duration-300 ease-in-out">
+            <span class="pb-1 bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+              {{ $item['categoryName'] }}
+            </span>
+          </a>
+          <div tabindex="0" class="dropdown-content z-[1] mt-4 card card-compact rounded-none w-96 shadow bg-white text-black">
             <div class="card-body">
-              <div class="flex flex-wrap">
-                @foreach ($item->subCategory()->get() as $item)
-                <a href="#1" class="p-5 hover:font-bold" wire:navigate>{{ $item['subName'] }}</a>
+              <div class="grid grid-cols-3">
+                @foreach ($item->subCategory()->get() as $sub)
+                <a href="/category/{{ $item['slug'] }}/{{ $sub['slug'] }}" wire:navigate class="py-2 mr-3 hover:font-bold">{{ $sub['subName'] }}</a>
                 @endforeach
               </div>
             </div>
           </div>
         </div>
         @endforeach
-        <div role="button" class="py-3 m-1 mx-3">Lainnya</div>
-      </ul>
+        <a class="px-3 group py-5 transition-all duration-300 ease-in-out" role="button" data-drawer-target="drawer-full-category" data-drawer-show="drawer-full-category" data-drawer-placement="left" aria-controls="drawer-full-category">
+          <span class="pb-1 bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+            Lainnya
+          </span>
+        </a>
+      </div>
     </div>
   </div>
+  {{-- right action button --}}
   <div class="mr-3">
+    {{-- search --}}
     <button class="btn btn-ghost btn-circle" data-modal-target="search_modal" data-modal-toggle="search_modal" >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
     </button>
+    {{-- cart --}}
     @livewire('product.cart-button')
+    {{-- account --}}
     <a class="btn btn-ghost btn-circle" href="/login" wire:navigate>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
         <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
@@ -75,3 +76,6 @@ $categories = App\Models\Category::limit(5)->get();
 
 {{-- Cart Drawer --}}
 @livewire('product.cart')
+
+{{-- Full Category Drawer --}}
+<x-home.drawerFullCategory :categories="$allCategories"/>
