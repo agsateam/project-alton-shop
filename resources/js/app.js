@@ -55,14 +55,14 @@ document.addEventListener("livewire:navigated", () => {
     initFlowbite();
 
     let path = window.location.pathname; // Get path
-    
+
     // on landing page
-    if(path == '/'){
+    if (path == "/") {
         responsiveSlidePerView();
     }
-    
+
     // on checkout page
-    if(path == '/checkout'){
+    if (path == "/checkout") {
         let selectProvince = document.querySelector("#province");
         let selectCity = document.querySelector("#city");
         let selectDistrict = document.querySelector("#district");
@@ -77,11 +77,13 @@ document.addEventListener("livewire:navigated", () => {
                 <option disabled>Pilih kota lebih dulu.</option>
             `;
 
-            fetch(`https://vardrz.github.io/api-wilayah-indonesia/static/api/regencies/${event.target.value}.json`)
-                .then(response => response.json())
+            fetch(
+                `https://vardrz.github.io/api-wilayah-indonesia/static/api/regencies/${event.target.value}.json`
+            )
+                .then((response) => response.json())
                 .then((data) => {
                     selectCity.innerHTML = `<option selected disabled>Pilih Kota</option>`;
-                    data.forEach(item => {
+                    data.forEach((item) => {
                         selectCity.innerHTML += `<option value="${item.id}">${item.name}</option>`;
                     });
                 })
@@ -99,11 +101,13 @@ document.addEventListener("livewire:navigated", () => {
                 <option disabled>Loading ...</option>
             `;
 
-            fetch(`https://vardrz.github.io/api-wilayah-indonesia/static/api/districts/${event.target.value}.json`)
-                .then(response => response.json())
+            fetch(
+                `https://vardrz.github.io/api-wilayah-indonesia/static/api/districts/${event.target.value}.json`
+            )
+                .then((response) => response.json())
                 .then((data) => {
                     selectDistrict.innerHTML = `<option selected disabled>Pilih Kecamatan</option>`;
-                    data.forEach(item => {
+                    data.forEach((item) => {
                         selectDistrict.innerHTML += `<option value="${item.id}">${item.name}</option>`;
                     });
                 })

@@ -9,6 +9,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ProfilController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/tos', [TosController::class, 'index']);
@@ -22,10 +23,11 @@ Route::get('/checkout', [CheckoutController::class, 'index']);
 // Route::post('/checkout', [CheckoutController::class, 'createTransaction']);
 
 Route::get('/dashboard', [AccountController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/informasi-pribadi', [ProfilController::class, 'index'])->middleware(['auth'])->name('profil');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+// Route::view('profile', 'profile')
+//     ->middleware(['auth'])
+//     ->name('profile');
 
 Route::get('/google/redirect', [App\Http\Controllers\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [App\Http\Controllers\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
