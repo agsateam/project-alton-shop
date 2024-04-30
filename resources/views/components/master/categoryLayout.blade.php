@@ -38,7 +38,7 @@ $slug = explode("/", request()->getPathInfo());
                 </div>
             {{-- end category --}}
 
-            @if ($slug[1] != "search")
+            @if ($slug[1] == "category")
             {{-- sub category --}}
             <button type="button" class="flex items-center justify-between w-full p-3 font-medium border-black text-black border-b" data-accordion-target="#accordion-color-subCategory" aria-expanded="true" aria-controls="accordion-color-subCategory">
             <span>Sub Category</span>

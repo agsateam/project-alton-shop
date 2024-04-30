@@ -26,7 +26,10 @@ $slug = explode("/", request()->getPathInfo());
         </span>
 
         <div class="mt-16 md:mt-0">
-          @livewire('category.products', ['products' => $products])
+          @livewire('category.products', [
+            'products' => $products,
+            'loadBySubCategory' => $slug[3]
+          ])
         </div>
 
     </x-master.categoryLayout>

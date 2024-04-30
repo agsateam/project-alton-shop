@@ -28,7 +28,7 @@
                     </li>
                </ul>
             </li>
-            @if ($slug[1] != "search")
+            @if ($slug[1] == "category")
             <li>
                <button type="button" class="flex items-center w-full px-3 py-2 bg-primary text-white" aria-controls="dropdown-filter-subcategory" data-collapse-toggle="dropdown-filter-subcategory" aria-expanded="true">
                     <span class="flex-1 text-left font-bold">Sub Category</span>

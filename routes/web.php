@@ -29,6 +29,8 @@ Route::get('/category/{categorySlug}/{subSlug?}', [CategoryController::class, 's
 
 // Product
 Route::get('/product/{id?}', [ProductController::class, 'index']);
+Route::get('/allproduct', [ProductController::class, 'allProduct']);
+// Route::get('/allproduct/loadmore', [ProductController::class, 'loadmore']);
 
 // Checkout
 Route::get('/checkout', [CheckoutController::class, 'index']);
@@ -43,5 +45,7 @@ Route::view('profile', 'profile')
 // Google Login
 Route::get('/google/redirect', [App\Http\Controllers\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [App\Http\Controllers\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
+
+
 
 require __DIR__ . '/auth.php';

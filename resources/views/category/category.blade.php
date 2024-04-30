@@ -1,3 +1,7 @@
+<?php 
+$slug = explode("/", request()->getPathInfo());
+?>
+
 <x-landing-layout>
     <x-master.categoryLayout :products="$products" :categories="$categories">
 
@@ -17,7 +21,10 @@
         </span>
 
         <div class="mt-12 md:mt-0">
-            @livewire('category.products', ['products' => $products])
+            @livewire('category.products', [
+                'products' => $products,
+                'loadByCategory' => $slug[2]
+            ])
         </div>
         
     </x-master.categoryLayout>
