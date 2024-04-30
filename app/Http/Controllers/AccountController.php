@@ -43,4 +43,10 @@ class AccountController extends Controller
 
         return view('account.dashboard', ['data' => $data]);
     }
+
+    public function profil()
+    {
+        $user = auth()->user();
+        return view('account.profil', compact('user'));
+    }
 }

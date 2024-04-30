@@ -11,9 +11,9 @@ $products = Product::limit(20)->get();
   <div class="cards_products_section flex flex-wrap gap-5 md:gap-12 justify-center">
     @foreach($products as $product)
     <a href="/product/{{ $product->product_id }}" wire:navigate>
-      <div class="card_product w-[150px] sm:w-[170px] md:w-[250px] drop-shadow-md">
+      <div class="card_product border border-gray-300 w-[150px] sm:w-[170px] md:w-[250px] drop-shadow-md">
         <img src="https://i.pinimg.com/564x/91/53/77/915377ae07969319fea5bc55d3422b0e.jpg" alt="Gambar Produk">
-        <div class="ket_product flex flex-col justify-around">
+        <div class="ket_product bg-white flex flex-col justify-around">
           <div class="product_name text-md md:text-xl font-normal px-2">{{ $product['name'] }}</div>
           <div class="ket2 flex flex-col md:flex-row justify-between">
             {{-- Rating --}}

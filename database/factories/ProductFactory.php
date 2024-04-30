@@ -25,6 +25,37 @@ class ProductFactory extends Factory
             "ALTON Malvin Flannel"
         ];
 
+        $dummyCategory = [
+            "baby-kids",
+            "set",
+            "atasan",
+            "muslim",
+            "aksesoris",
+        ];
+
+        $dummySubCategory = [
+            "baby-kids" => [
+                "baby",
+                "kids",
+            ],
+            "set" => [
+                "kain",
+                "katun"
+            ],
+            "atasan" => [
+                "flannel",
+                "kemeja"
+            ],
+            "muslim" => [
+                "koko",
+                "mukena"
+            ],
+            "aksesoris" => [
+                "jam-tangan",
+                "kalung"
+            ],
+        ];
+
         $sizes = ['S', 'M', 'L', 'XL'];
         $stock = [
             'S' => $this->faker->numberBetween(0, 20),
@@ -32,6 +63,8 @@ class ProductFactory extends Factory
             'L' => $this->faker->numberBetween(0, 20),
             'XL' => $this->faker->numberBetween(0, 20),
         ];
+
+        $categoryGenerated = $dummyCategory[$this->faker->numberBetween(0, 4)];
 
         return [
             'product_id' => $this->faker->uuid(),
@@ -42,7 +75,9 @@ class ProductFactory extends Factory
             'stock' => serialize($stock),
             'sizeChartImage' => "https://img.lazcdn.com/g/p/5586dc8d9fbdf8f6682ceb8a33e7ab91.png_2200x2200q80.png",
             'description' => $this->faker->paragraphs(5, true),
-            'is_promo' => false
+            'is_promo' => false,
+            'category' => $categoryGenerated,
+            'sub_category' => $dummySubCategory[$categoryGenerated][$this->faker->numberBetween(0, 1)],
         ];
     }
 }
