@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire\Forms;
+namespace App\Livewire\Account;
 
 use App\Models\User;
 use Livewire\Attributes\Rule;
 use Livewire\Form;
 
-class ProfilForm extends Form
+class UpdateProfilForm extends Form
 {
     #[Rule(
         [

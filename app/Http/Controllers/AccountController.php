@@ -46,7 +46,6 @@ class AccountController extends Controller
 
     public function profil()
     {
-        $user = auth()->user();
-        return view('account.profil', compact('user'));
+        return view('account.update-profil');
     }
 }

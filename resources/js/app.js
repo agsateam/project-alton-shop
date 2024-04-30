@@ -60,7 +60,7 @@ document.addEventListener("livewire:navigated", () => {
     }
 
     // on checkout page
-    if (path == "/checkout") {
+    if (path == "/checkout" || path == "/informasi-pribadi") {
         let selectProvince = document.querySelector("#province");
         let selectCity = document.querySelector("#city");
         let selectDistrict = document.querySelector("#district");

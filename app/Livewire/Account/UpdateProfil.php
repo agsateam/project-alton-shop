@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Account;
 
-use App\Livewire\Forms\ProfilForm;
+use App\Livewire\Account\UpdateProfilForm;
 use Livewire\Component;
 
-class Profil extends Component
+class UpdateProfil extends Component
 {
-    public ProfilForm $form;
+    public UpdateProfilForm $form;
     public string $nama_depan = '';
     public string $email = '';
 
@@ -19,7 +19,7 @@ class Profil extends Component
     }
     public function render()
     {
-        return view('livewire.account.profil');
+        return view('livewire.account.update-profil');
     }
 
     public function update(): void
