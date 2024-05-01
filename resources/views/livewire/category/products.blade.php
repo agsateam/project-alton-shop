@@ -1,4 +1,5 @@
 {{-- content category --}}
+
 <div class="scroll-smooth">
     {{-- Cards Products --}}
     <div class="flex flex-wrap justify-between md:justify-start">
@@ -41,5 +42,8 @@
         @endforeach
     </div>
     {{-- End Of Cards Products --}}
+    <div class="btn-more w-full flex justify-center">
+        <button class="bg-primary px-12 py-2 text-white font-medium" wire:click="loadMore">More</button>
+    </div>
 </div>
 {{-- end content category --}}
