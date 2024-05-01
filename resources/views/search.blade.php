@@ -17,7 +17,10 @@
         </span>
 
         <div class="mt-12 md:mt-0">
-            @livewire('category.products', ['products' => $products])
+            @livewire('category.products', [
+                'products' => $products,
+                'loadBySearch' => $keyword
+            ])
         </div>
         
     </x-master.categoryLayout>

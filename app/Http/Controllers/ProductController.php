@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -22,6 +23,18 @@ class ProductController extends Controller
         return view('productDetail', [
             'product' => $product,
             'images' => $images
+        ]);
+    }
+
+    public function allProduct(){
+        dd(Product::all());
+
+        $category = Category::all();
+        $products = Product::take(8)->get();
+
+        return view('category.allproduct', [
+            'categories' => $category,
+            'products' => $products,
         ]);
     }
 }

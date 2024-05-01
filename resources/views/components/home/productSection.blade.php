@@ -37,7 +37,7 @@ $products = Product::limit(20)->get();
     </a>
     @endforeach
     <div class="btn-more w-full flex justify-center">
-        <button class="bg-primary px-12 py-2 text-white font-medium">More</button>
+        <a href="/allproduct" class="bg-primary px-12 py-2 text-white font-medium" wire:navigate>More</a>
     </div>
   </div>
   {{-- End Of Cards Products --}}

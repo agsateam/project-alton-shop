@@ -3,6 +3,7 @@
 namespace App\Livewire\Category;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class Filter extends Component
 {
@@ -61,5 +62,15 @@ class Filter extends Component
 
         $this->filter_harga_max = $value;
         $this->dispatch('filterHarga', min: $this->filter_harga_min, max: $this->filter_harga_max);
+    }
+
+    #[On('resetFilter')]
+    public function resetFilter()
+    {
+        $this->filter_terbaru = true;
+        $this->filter_rating = false;
+        $this->filter_harga_min = 0;
+        $this->filter_harga_max = 0;
+        $this->rentang_harga_salah = false;
     }
 }
