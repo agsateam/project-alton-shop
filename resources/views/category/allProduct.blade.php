@@ -18,9 +18,6 @@
 
       <div class="mt-12 md:mt-0">
           @livewire('category.products', ['products' => $products])
-          {{-- <div class="btn-more w-full flex justify-center">
-            <button href="/allproduct/loadmore" class="bg-primary px-12 py-2 text-white font-medium" wire:navigate>More</button>
-        </div> --}}
       </div>
       
   </x-master.categoryLayout>
