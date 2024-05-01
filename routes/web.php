@@ -11,7 +11,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\ProfilController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -38,7 +37,7 @@ Route::get('/checkout', [CheckoutController::class, 'index']);
 // Route::post('/checkout', [CheckoutController::class, 'createTransaction']);
 
 Route::get('/dashboard', [AccountController::class, 'index'])->middleware(['auth'])->name('dashboard');
-Route::get('/informasi-pribadi', [ProfilController::class, 'index'])->middleware(['auth'])->name('profil');
+Route::get('/informasi-pribadi', [AccountController::class, 'profil'])->middleware(['auth'])->name('profil');
 
 // Google Login
 Route::get('/google/redirect', [App\Http\Controllers\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');

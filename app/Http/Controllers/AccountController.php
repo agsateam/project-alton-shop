@@ -43,4 +43,9 @@ class AccountController extends Controller
 
         return view('account.dashboard', ['data' => $data]);
     }
+
+    public function profil()
+    {
+        return view('account.update-profil');
+    }
 }
