@@ -3,7 +3,6 @@
 namespace App\Livewire\Category;
 
 use Livewire\Component;
-use Livewire\Attributes\On;
 
 class Filter extends Component
 {
