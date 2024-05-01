@@ -16,7 +16,7 @@ class CategoryController extends Controller
 
         $category = Category::all();
         $categoryName = Category::where('slug', $slug)->first()->categoryName;
-        $products = Product::where('category', $slug)->take(8)->get();
+        $products = Product::where('category', $slug)->get();
 
         return view('category.category', [
             'categories' => $category,
@@ -38,7 +38,7 @@ class CategoryController extends Controller
         $categories = Category::all();
         $categoryName = Category::where('slug', $slug)->first()->categoryName;
         $subCategoryName = SubCategory::where('slug', $subSlug)->first()->subName;
-        $products = Product::where('sub_category', $subSlug)->take(8)->get();
+        $products = Product::where('sub_category', $subSlug)->get();
 
         return view('category.subCategory', [
             'categories' => $categories,

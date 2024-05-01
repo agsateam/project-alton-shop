@@ -26,11 +26,10 @@ class ProductController extends Controller
         ]);
     }
 
-    public function allProduct(){
-        dd(Product::all());
-
+    public function allProduct()
+    {
         $category = Category::all();
-        $products = Product::take(8)->get();
+        $products = Product::all();
 
         return view('category.allproduct', [
             'categories' => $category,

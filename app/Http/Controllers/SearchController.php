@@ -17,7 +17,7 @@ class SearchController extends Controller
         $getKeyword = "%" . $request['keyword'] . "%";
 
         $category = Category::all();
-        $products = Product::whereAny(['name'], 'LIKE', $getKeyword)->take(8)->get();
+        $products = Product::whereAny(['name'], 'LIKE', $getKeyword)->get();
 
         return view('search', [
             'categories' => $category,
