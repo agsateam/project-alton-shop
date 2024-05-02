@@ -48,6 +48,8 @@ function responsiveSlidePerView() {
     swiper.update();
 }
 
+window.addEventListener("resize", responsiveSlidePerView); // Update on window resize
+
 document.addEventListener("livewire:navigated", () => {
     initFlowbite();
 
