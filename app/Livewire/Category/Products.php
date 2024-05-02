@@ -30,7 +30,7 @@ class Products extends Component
 
     public function loadMore()
     {
-        $this->count += 4; // menambah nilai var count yg awalnya 20
+        $this->count += 20; // menambah nilai var count yg awalnya 20
         $this->products = $this->backupProducts->take($this->count); // update var product, ambil dari backup product
 
         $this->runFilters(); // jalankan filter
@@ -58,8 +58,11 @@ class Products extends Component
 
         $max == 0 ? $max = 100000000 : $max = $max; // jika max=0, isi max dgn nilai 1jt, jadi between 0-1jt, tidak 0-0
         $this->products = $this->products->whereBetween('price', [$min, $max]);
-
         $this->products = $this->products->take($this->count);
+
+        // update backup filtered products, untuk cek hide "load more button"
+        $this->backupFilteredProducts = $this->backupProducts;
+        $this->backupFilteredProducts = $this->backupFilteredProducts->whereBetween('price', [$min, $max]);
     }
 
     public function render()
