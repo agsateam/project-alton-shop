@@ -31,9 +31,9 @@ class DatabaseSeeder extends Seeder
             'last_name'     => 'Last Name',
             'date_of_birth' => '1999-01-01',
             'phone_number'  => '081234567890',
-            'province'      => '33',
-            'city'          => '33.16',
-            'district'      => '33.16.09',
+            'province'      => 'JAWA TENGAH',
+            'city'          => 'KABUPATEN BLORA',
+            'district'      => 'Blora',
             'postal_code'   => '05241',
         ]);
     }

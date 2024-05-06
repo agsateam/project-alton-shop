@@ -38,6 +38,11 @@ Route::get('/checkout', [CheckoutController::class, 'index']);
 
 Route::get('/dashboard', [AccountController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::get('/informasi-pribadi', [AccountController::class, 'profil'])->middleware(['auth'])->name('profil');
+Route::get('/ubah-sandi', [AccountController::class, 'changePassword'])->middleware(['auth'])->name('ubahSandi');
+
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
 
 // Google Login
 Route::get('/google/redirect', [App\Http\Controllers\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');

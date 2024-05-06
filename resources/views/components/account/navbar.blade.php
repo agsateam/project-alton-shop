@@ -20,17 +20,17 @@
         </div>
         <ul class="py-2 text-sm" aria-labelledby="dropdownAccountButton">
           <li>
-            <a href="/dashboard" class="block px-4 py-2 hover:bg-secondary">Transaksi</a>
+            <a href="/dashboard" wire:navigate class="block px-4 py-2 hover:bg-secondary">Transaksi</a>
           </li>
           <li>
-            <a href="/ubah-password" class="block px-4 py-2 hover:bg-secondary">Ubah Password</a>
+            <a href="/ubah-sandi" wire:navigate class="block px-4 py-2 hover:bg-secondary">Ubah Password</a>
           </li>
           <li>
-            <a href="/informasi-pribadi" class="block px-4 py-2 hover:bg-secondary">Profil</a>
+            <a href="/informasi-pribadi" wire:navigate class="block px-4 py-2 hover:bg-secondary">Profil</a>
           </li>
         </ul>
         <div class="py-2">
-          <a href="/logout" class="block px-4 py-2 text-sm hover:bg-secondary">Log Out</a>
+          <a href="/logout" wire:navigate class="block px-4 py-2 text-sm hover:bg-secondary">Log Out</a>
         </div>
       </div>
     </div>
