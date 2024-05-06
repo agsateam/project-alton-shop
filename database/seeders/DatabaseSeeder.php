@@ -26,8 +26,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'name' => 'Test',
-            'email' => 'tes@exam.com',
+            'name'          => 'First Name',
+            'email'         => 'admin@example.com',
+            'last_name'     => 'Last Name',
+            'date_of_birth' => '1999-01-01',
+            'phone_number'  => '081234567890',
+            'province'      => '33',
+            'city'          => '33.16',
+            'district'      => '33.16.09',
+            'postal_code'   => '05241',
         ]);
     }
 }

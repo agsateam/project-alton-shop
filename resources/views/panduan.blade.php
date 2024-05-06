@@ -49,21 +49,6 @@ $panduan = array(
             </div>
         </div>
         {{-- end content accordion --}}
-
-        <script>
-            //panduan
-            const acccordincontent = document.querySelectorAll(".accordion-content");
-            const accordionicons = document.querySelectorAll(".accordion-icons");
-            document.addEventListener("click", function () {
-                acccordincontent.forEach((content, index) => {
-                    if (content.classList.contains("hidden")) {
-                        accordionicons[index].classList.remove("rotate-45");
-                    } else {
-                        accordionicons[index].classList.add("rotate-45");
-                    }
-                });
-            });
-        </script>
         
     </x-master.infoLayout>
 </x-landing-layout>

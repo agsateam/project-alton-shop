@@ -65,15 +65,17 @@ document.addEventListener("livewire:navigated", () => {
     if (path == "/checkout" || path == "/informasi-pribadi") {
         let selectProvince = document.querySelector("#province");
         let selectCity = document.querySelector("#city");
+        let selectCityValue = selectCity.getAttribute("value");
         let selectDistrict = document.querySelector("#district");
+        let selectDistrictValue = selectDistrict.getAttribute("value");
         // province select value changed
         selectProvince.addEventListener("change", (event) => {
             selectCity.innerHTML = `
-                <option selected disabled>Pilih Kota</option>
+                <option value="" selected disabled>Pilih Kota</option>
                 <option disabled>Loading ...</option>
             `;
             selectDistrict.innerHTML = `
-                <option selected disabled>Pilih Kecamatan</option>
+                <option value="" selected disabled>Pilih Kecamatan</option>
                 <option disabled>Pilih kota lebih dulu.</option>
             `;
 
@@ -82,14 +84,22 @@ document.addEventListener("livewire:navigated", () => {
             )
                 .then((response) => response.json())
                 .then((data) => {
-                    selectCity.innerHTML = `<option selected disabled>Pilih Kota</option>`;
+                    if (selectCityValue == null) {
+                        selectCity.innerHTML = `<option value="" selected disabled>Pilih Kota</option>`;
+                    } else {
+                        selectCity.innerHTML = `<option disabled>Pilih Kota</option>`;
+                    }
                     data.forEach((item) => {
-                        selectCity.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                        if (selectCityValue == item.id) {
+                            selectCity.innerHTML += `<option value="${item.id}" selected>${item.name}</option>`;
+                        } else {
+                            selectCity.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                        }
                     });
                 })
                 .catch((error) => {
                     selectCity.innerHTML = `
-                        <option selected disabled>Pilih Kota</option>
+                        <option value="" selected disabled>Pilih Kota</option>
                         <option disabled>Data tidak ditemukan, reload halaman!</option>
                     `;
                 });
@@ -97,7 +107,7 @@ document.addEventListener("livewire:navigated", () => {
         // city select value changed
         selectCity.addEventListener("change", (event) => {
             selectDistrict.innerHTML = `
-                <option selected disabled>Pilih Kecamatan</option>
+                <option value="" selected disabled>Pilih Kecamatan</option>
                 <option disabled>Loading ...</option>
             `;
 
@@ -106,17 +116,41 @@ document.addEventListener("livewire:navigated", () => {
             )
                 .then((response) => response.json())
                 .then((data) => {
-                    selectDistrict.innerHTML = `<option selected disabled>Pilih Kecamatan</option>`;
+                    if (selectDistrictValue == null) {
+                        selectDistrict.innerHTML = `<option value="" selected disabled>Pilih Kecamatan</option>`;
+                    } else {
+                        selectDistrict.innerHTML = `<option disabled>Pilih Kecamatan</option>`;
+                    }
                     data.forEach((item) => {
-                        selectDistrict.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                        if (selectDistrictValue == item.id) {
+                            selectDistrict.innerHTML += `<option value="${item.id}" selected>${item.name}</option>`;
+                        } else {
+                            selectDistrict.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                        }
                     });
                 })
                 .catch((error) => {
                     selectDistrict.innerHTML = `
-                        <option selected disabled>Pilih Kecamatan</option>
+                        <option value="" selected disabled>Pilih Kecamatan</option>
                         <option disabled>Data tidak ditemukan, reload halaman!</option>
                     `;
                 });
+        });
+    }
+
+    if (path == "/panduan") {
+        //panduan
+        const acccordincontent =
+            document.querySelectorAll(".accordion-content");
+        const accordionicons = document.querySelectorAll(".accordion-icons");
+        document.addEventListener("click", function () {
+            acccordincontent.forEach((content, index) => {
+                if (content.classList.contains("hidden")) {
+                    accordionicons[index].classList.remove("rotate-45");
+                } else {
+                    accordionicons[index].classList.add("rotate-45");
+                }
+            });
         });
     }
 });
