@@ -144,10 +144,10 @@
                         selectProvince.innerHTML = `<option disabled>Pilih Provinsi</option>`;
                     }
                     data.forEach(item => {
-                        if(selectProvinceValue == item.id){
-                            selectProvince.innerHTML += `<option value="${item.id}" selected>${item.name}</option>`;
+                        if(selectProvinceValue == item.name){
+                            selectProvince.innerHTML += `<option value="${item.name}" id="${item.id}" selected>${item.name}</option>`;
                         }else{
-                            selectProvince.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                            selectProvince.innerHTML += `<option value="${item.name}" id="${item.id}" >${item.name}</option>`;
                         }
                     });
                 })

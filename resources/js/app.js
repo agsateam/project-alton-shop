@@ -80,7 +80,9 @@ document.addEventListener("livewire:navigated", () => {
             `;
 
             fetch(
-                `https://vardrz.github.io/api-wilayah-indonesia/static/api/regencies/${event.target.value}.json`
+                `https://vardrz.github.io/api-wilayah-indonesia/static/api/regencies/${
+                    event.target.options[event.target.selectedIndex].id
+                }.json`
             )
                 .then((response) => response.json())
                 .then((data) => {
@@ -90,10 +92,10 @@ document.addEventListener("livewire:navigated", () => {
                         selectCity.innerHTML = `<option disabled>Pilih Kota</option>`;
                     }
                     data.forEach((item) => {
-                        if (selectCityValue == item.id) {
-                            selectCity.innerHTML += `<option value="${item.id}" selected>${item.name}</option>`;
+                        if (selectCityValue == item.name) {
+                            selectCity.innerHTML += `<option value="${item.name}" id="${item.id}" selected>${item.name}</option>`;
                         } else {
-                            selectCity.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                            selectCity.innerHTML += `<option value="${item.name}" id="${item.id}">${item.name}</option>`;
                         }
                     });
                 })
@@ -112,7 +114,9 @@ document.addEventListener("livewire:navigated", () => {
             `;
 
             fetch(
-                `https://vardrz.github.io/api-wilayah-indonesia/static/api/districts/${event.target.value}.json`
+                `https://vardrz.github.io/api-wilayah-indonesia/static/api/districts/${
+                    event.target.options[event.target.selectedIndex].id
+                }.json`
             )
                 .then((response) => response.json())
                 .then((data) => {
@@ -122,10 +126,10 @@ document.addEventListener("livewire:navigated", () => {
                         selectDistrict.innerHTML = `<option disabled>Pilih Kecamatan</option>`;
                     }
                     data.forEach((item) => {
-                        if (selectDistrictValue == item.id) {
-                            selectDistrict.innerHTML += `<option value="${item.id}" selected>${item.name}</option>`;
+                        if (selectDistrictValue == item.name) {
+                            selectDistrict.innerHTML += `<option value="${item.name}" id="${item.id}" selected>${item.name}</option>`;
                         } else {
-                            selectDistrict.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                            selectDistrict.innerHTML += `<option value="${item.name}" id="${item.id}">${item.name}</option>`;
                         }
                     });
                 })

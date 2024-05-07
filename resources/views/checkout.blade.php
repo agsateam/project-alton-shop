@@ -242,7 +242,7 @@
                     
                     selectProvince.innerHTML = `<option selected disabled>Pilih Provinsi</option>`;
                     data.forEach(item => {
-                        selectProvince.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                        selectProvince.innerHTML += `<option value="${item.name}" id="${item.id}">${item.name}</option>`;
                     });
                 })
                 .catch((error) => {
