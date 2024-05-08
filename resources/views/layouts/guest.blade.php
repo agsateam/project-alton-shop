@@ -21,11 +21,12 @@ $theme = WebConfig::first()->theme;
     </head>
     <body data-theme="{{ $theme }}" class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-white">
-            <div>
+            <div class="text-center">
                 <a href="/" wire:navigate>
                     <h1 class="text-5xl font-bold">ALTON</h1>
                     {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
                 </a>
+                <h4 class="hidden text-2xl mt-2 font-normal" id="admin">Login Administrator</h4>
             </div>
 
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 overflow-hidden">
@@ -33,4 +34,10 @@ $theme = WebConfig::first()->theme;
             </div>
         </div>
     </body>
+    <script>
+        let admin = document.querySelector('#admin');
+        if(window.location.pathname == "/admin"){
+            admin.classList.remove("hidden");
+        }
+    </script>
 </html>
