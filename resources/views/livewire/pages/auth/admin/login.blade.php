@@ -12,6 +12,17 @@ new #[Layout('layouts.guest')] class extends Component
     /**
      * Handle an incoming authentication request.
      */
+
+    public function mount(){
+        if(Auth::check()){
+            if(Auth::user()->hasRole('admin')){
+                return redirect()->route('admin.dashboard');
+            }else{
+                return redirect()->route('dashboard');
+            }
+        }
+    }
+    
     public function login(): void
     {
         $this->validate();

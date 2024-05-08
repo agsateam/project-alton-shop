@@ -30,17 +30,20 @@ Route::get('/allproduct', [ProductController::class, 'allProduct']);
 // Checkout
 Route::get('/checkout', [CheckoutController::class, 'index']);
 // TODO (checkout): // Route::post('/checkout', [CheckoutController::class, 'createTransaction']);
-// Users
-Route::get('/dashboard', [AccountController::class, 'index'])->middleware(['auth'])->name('dashboard');
-Route::get('/informasi-pribadi', [AccountController::class, 'profil'])->middleware(['auth'])->name('profil');
 // Google Login
 Route::get('/google/redirect', [App\Http\Controllers\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [App\Http\Controllers\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
 
+// Users
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/dashboard', [AccountController::class, 'index'])->name('dashboard');
+    Route::get('/informasi-pribadi', [AccountController::class, 'profil'])->name('profil');
+});
 
 // Backend Admin
-Route::prefix('admin')->middleware(['auth'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('dashboard', function () {
+        echo "<a href='/logout'>Logout</a>";
         dd("ini dashboard admin");
     })->name('admin.dashboard');
 });
