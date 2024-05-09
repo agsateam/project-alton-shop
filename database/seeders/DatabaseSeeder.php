@@ -17,17 +17,20 @@ class DatabaseSeeder extends Seeder
             WebConfigSeeder::class,
             ProductSeeder::class,
             CategorySeeder::class,
-            SubCategorySeeder::class
+            SubCategorySeeder::class,
+            PermissionSeeder::class
         ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
+        $user = User::factory()->create([
+            'name' => 'Mas Padhil',
             'email' => 'test@example.com',
         ]);
+        $user->assignRole("user");
 
-        User::factory()->create([
-            'name' => 'Test',
-            'email' => 'tes@exam.com',
+        $admin = User::factory()->create([
+            'name' => 'Mas Agoy',
+            'email' => 'admin@example.com',
         ]);
+        $admin->assignRole("admin");
     }
 }

@@ -11,6 +11,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\admin\DashboardController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -19,30 +20,41 @@ Route::get('/tos', [TosController::class, 'index']);
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index']);
 Route::get('/panduan', [PanduanController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
-
 // Search
 Route::get('/search', [SearchController::class, 'index']);
-
 // Category
 Route::get('/category/{categorySlug?}', [CategoryController::class, 'index']);
 Route::get('/category/{categorySlug}/{subSlug?}', [CategoryController::class, 'subCategory']);
-
 // Product
 Route::get('/product/{id?}', [ProductController::class, 'index']);
 Route::get('/allproduct', [ProductController::class, 'allProduct']);
-// Route::get('/allproduct/loadmore', [ProductController::class, 'loadmore']);
-
 // Checkout
 Route::get('/checkout', [CheckoutController::class, 'index']);
-// Route::post('/checkout', [CheckoutController::class, 'createTransaction']);
-
-Route::get('/dashboard', [AccountController::class, 'index'])->middleware(['auth'])->name('dashboard');
-Route::get('/informasi-pribadi', [AccountController::class, 'profil'])->middleware(['auth'])->name('profil');
-
+// TODO (checkout): // Route::post('/checkout', [CheckoutController::class, 'createTransaction']);
 // Google Login
 Route::get('/google/redirect', [App\Http\Controllers\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [App\Http\Controllers\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
 
+// Users
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/dashboard', [AccountController::class, 'index'])->name('dashboard');
+    Route::get('/informasi-pribadi', [AccountController::class, 'profil'])->name('profil');
+});
+
+// Backend Admin
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+    // Dashboard
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    // Master Data
+    Route::prefix("data")->group(function () {
+        Route::get('produk', function () {
+            dd("Ini halaman naster data produk");
+        })->name('admin.data.produk');
+        Route::get('kategori', function () {
+            dd("Ini halaman naster data kategori");
+        })->name('admin.data.kategori');
+    });
+});
 
 
 require __DIR__ . '/auth.php';
