@@ -11,6 +11,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\admin\DashboardController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -42,10 +43,17 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
 // Backend Admin
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('dashboard', function () {
-        echo "<a href='/logout'>Logout</a>";
-        dd("ini dashboard admin");
-    })->name('admin.dashboard');
+    // Dashboard
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    // Master Data
+    Route::prefix("data")->group(function () {
+        Route::get('produk', function () {
+            dd("Ini halaman naster data produk");
+        })->name('admin.data.produk');
+        Route::get('kategori', function () {
+            dd("Ini halaman naster data kategori");
+        })->name('admin.data.kategori');
+    });
 });
 
 
