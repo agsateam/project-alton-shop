@@ -8,7 +8,7 @@ $products = Product::limit(20)->get();
 <div class="product_section px-4 sm:px-8 py-8 inline-flex flex-col items-center">
   <div class="font-bold text-3xl py-8">OUR PRODUCT</div>
   {{-- Cards Products --}}
-  <div class="cards_products_section flex flex-wrap gap-5 md:gap-6 justify-center sm:justify-start">
+  <div class="cards_products_section flex flex-wrap gap-5 md:gap-6 justify-center sm:justify-center">
     @foreach($products as $product)
     <a href="/product/{{ $product->product_id }}" wire:navigate class="w-[46%] sm:w-[31%] md:[27%] lg:w-[23%]">
       <div class="card_product border border-gray-300 drop-shadow-md">
