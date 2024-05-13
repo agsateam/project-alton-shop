@@ -37,6 +37,7 @@ class GoogleLoginController extends Controller
                     'email' => $google_user->getEmail(),
                     'google_id' => $google_user->getId()
                 ]);
+                $new_user->assignRole("user");
 
                 Auth::login($new_user);
                 return redirect('/dashboard');
