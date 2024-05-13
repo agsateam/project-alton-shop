@@ -27,9 +27,22 @@ class DatabaseSeeder extends Seeder
         ]);
         $user->assignRole("user");
 
+        $user2 = User::factory()->create([
+            'name'          => 'First Name',
+            'email'         => 'user2@example.com',
+            'last_name'     => 'Last Name',
+            'date_of_birth' => '1999-01-01',
+            'phone_number'  => '081234567890',
+            'province'      => 'JAWA TENGAH',
+            'city'          => 'KABUPATEN BLORA',
+            'district'      => 'Blora',
+            'postal_code'   => '05241',
+          ]);
+        $user2->assignRole("user");
+      
         $admin = User::factory()->create([
             'name' => 'Mas Agoy',
-            'email' => 'admin@example.com',
+            'email' => 'admin@example.com'
         ]);
         $admin->assignRole("admin");
     }

@@ -48,4 +48,9 @@ class AccountController extends Controller
     {
         return view('account.update-profil');
     }
+
+    public function changePassword()
+    {
+        return view('account.ubah-sandi');
+    }
 }

@@ -23,7 +23,7 @@
     </div>
     <div class="hidden md:flex card shadow-md mt-5"><x-sidebar.accountButton href="/dashboard" wire:navigate>Riwayat Transaksi</x-sidebar.accountButton></div>
     <div class="hidden md:flex card shadow-md mt-1"><x-sidebar.accountButton href="/informasi-pribadi" wire:navigate>Profil</x-sidebar.accountButton></div>
-    <div class="hidden md:flex card shadow-md mt-1"><x-sidebar.accountButton href="/ubah-password" wire:navigate>Ubah Password</x-sidebar.accountButton></div>
+    <div class="hidden md:flex card shadow-md mt-1"><x-sidebar.accountButton href="/ubah-sandi" wire:navigate>Ubah Password</x-sidebar.accountButton></div>
     <div class="hidden md:flex card shadow-md mt-5"><x-sidebar.accountButton href="/logout" state="outline" wire:navigate>Logout</x-sidebar.accountButton></div>
   </div>
   <div class="flex flex-col w-full md:flex-row md:p-2 mt-2">

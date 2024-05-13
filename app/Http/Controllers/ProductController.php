@@ -31,7 +31,7 @@ class ProductController extends Controller
         $category = Category::all();
         $products = Product::all();
 
-        return view('category.allproduct', [
+        return view('category.allProduct', [
             'categories' => $category,
             'products' => $products,
         ]);

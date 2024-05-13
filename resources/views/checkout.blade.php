@@ -27,14 +27,14 @@
                 <div class="text-2xl font-bold mb-3">Informasi Pengiriman</div>
                 <x-input-float-label name="customer_name" type="text" label="Nama Lengkap Penerima" class="mb-2"/>
                 <div class="flex flex-col md:flex-row">
-                    <x-select-float-label name="province" label="Provinsi" class="w-full md:w-1/2"/>
-                    <x-select-float-label name="city" label="Kota" class="w-full md:w-1/2 md:ml-2">
+                    <x-select-float-label name="province" id="province" label="Provinsi" class="w-full md:w-1/2 mt-1 mb-2"/>
+                    <x-select-float-label name="city" id="city" label="Kota" class="w-full md:w-1/2 md:ml-2 mt-1 mb-2">
                         <option selected disabled>Pilih Kota</option>
                         <option disabled>Pilih provinsi lebih dulu.</option>
                     </x-select-float-label>
                 </div>
                 <div class="flex flex-col md:flex-row">
-                    <x-select-float-label name="district" label="Kecamatan" class="w-full md:w-1/2">
+                    <x-select-float-label name="district" id="district" label="Kecamatan" class="w-full md:w-1/2 mt-1 mb-2">
                         <option selected disabled>Pilih Kecamatan</option>
                         <option disabled>Pilih kota lebih dulu.</option>
                     </x-select-float-label>
@@ -242,7 +242,7 @@
                     
                     selectProvince.innerHTML = `<option selected disabled>Pilih Provinsi</option>`;
                     data.forEach(item => {
-                        selectProvince.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                        selectProvince.innerHTML += `<option value="${item.name}" id="${item.id}">${item.name}</option>`;
                     });
                 })
                 .catch((error) => {

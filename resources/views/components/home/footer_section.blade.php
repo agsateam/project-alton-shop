@@ -1,3 +1,4 @@
+<x-whatsapp-button/>
 <footer class="footer p-8 bg-primary text-white shadow-lg">
     <aside class="pl-5 hidden md:flex md:flex-col">
     <a href="/" wire:navigate class="text-6xl font-medium lg:ml-5 sm:ml-3">ALTON

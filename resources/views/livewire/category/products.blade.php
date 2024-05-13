@@ -42,8 +42,10 @@
         @endforeach
     </div>
     {{-- End Of Cards Products --}}
-    <div class="btn-more w-full flex justify-center">
+    @if (count($products) != count($backupFilteredProducts))
+    <div class="w-full flex justify-center">
         <button class="bg-primary px-12 py-2 text-white font-medium" wire:click="loadMore">More</button>
     </div>
+    @endif
 </div>
 {{-- end content category --}}

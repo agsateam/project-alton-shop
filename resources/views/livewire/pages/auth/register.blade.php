@@ -53,13 +53,13 @@ new #[Layout('layouts.guest')] class extends Component
 
         <div class="flex flex-row mt-4">
             <!-- Password -->
-            <x-text-input wire:model="password" id="password" class="block mt-1 w-full mr-2"
+            <x-text-input wire:model="password" click="togglePass()" hidden="password-icon-hidden" shown="password-icon-shown" id="password" class="block mt-1 w-full mr-2"
                             type="password"
                             name="password"
                             placeholder="Password"
                             required autocomplete="new-password" />
             <!-- Confirm Password -->
-            <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full"
+            <x-text-input wire:model="password_confirmation" click="toggleConfirmPass()" hidden="confirm-password-icon-hidden" shown="confirm-password-icon-shown" id="password_confirmation" class="block mt-1 w-full"
                             type="password"
                             name="password_confirmation"
                             placeholder="Confirm Password"
@@ -83,3 +83,36 @@ new #[Layout('layouts.guest')] class extends Component
         </a>
     </div>
 </div>
+
+<script>
+    function togglePass() {
+        let passwordInput = document.getElementById('password');
+        let iconHidden = passwordInput.nextElementSibling.children[0];
+        let iconShown = passwordInput.nextElementSibling.children[1];
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            iconHidden.classList.add('hidden');
+            iconShown.classList.remove('hidden');
+        } else {
+            passwordInput.type = 'password';
+            iconHidden.classList.remove('hidden');
+            iconShown.classList.add('hidden');
+        }
+    }
+    function toggleConfirmPass() {
+        let passwordInput = document.getElementById('password_confirmation');
+        let iconHidden = passwordInput.nextElementSibling.children[0];
+        let iconShown = passwordInput.nextElementSibling.children[1];
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            iconHidden.classList.add('hidden');
+            iconShown.classList.remove('hidden');
+        } else {
+            passwordInput.type = 'password';
+            iconHidden.classList.remove('hidden');
+            iconShown.classList.add('hidden');
+        }
+    }
+</script>

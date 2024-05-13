@@ -5,13 +5,13 @@ $products = Product::limit(20)->get();
 
 ?>
 
-<div class="product_section px-4 sm:px-8 py-8">
-  <div class="text-center font-bold text-3xl py-8">OUR PRODUCT</div>
+<div class="product_section px-4 sm:px-8 py-8 inline-flex flex-col items-center">
+  <div class="font-bold text-3xl py-8">OUR PRODUCT</div>
   {{-- Cards Products --}}
-  <div class="cards_products_section flex flex-wrap gap-5 md:gap-12 justify-center">
+  <div class="cards_products_section flex flex-wrap gap-5 md:gap-6 justify-center sm:justify-center">
     @foreach($products as $product)
-    <a href="/product/{{ $product->product_id }}" wire:navigate>
-      <div class="card_product border border-gray-300 w-[150px] sm:w-[170px] md:w-[250px] drop-shadow-md">
+    <a href="/product/{{ $product->product_id }}" wire:navigate class="w-[46%] sm:w-[31%] md:[27%] lg:w-[23%]">
+      <div class="card_product border border-gray-300 drop-shadow-md">
         <img src="https://i.pinimg.com/564x/91/53/77/915377ae07969319fea5bc55d3422b0e.jpg" alt="Gambar Produk">
         <div class="ket_product bg-white flex flex-col justify-around">
           <div class="product_name text-md md:text-xl font-normal px-2">{{ $product['name'] }}</div>
