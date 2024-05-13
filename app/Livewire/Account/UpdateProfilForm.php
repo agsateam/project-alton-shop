@@ -44,16 +44,16 @@ class UpdateProfilForm extends Form
             'kode_pos.max'          => 'Kode pos terlalu panjang',
         ]
     )]
-    public string $nama_depan = '';
-    public string $nama_belakang = '';
-    public string $ttl = '';
-    public string $jenis_kelamin = '';
-    public string $email = '';
-    public string $no_hp = '';
-    public string $province = '';
-    public string $city = '';
-    public string $district = '';
-    public string $kode_pos = '';
+    public $nama_depan;
+    public $nama_belakang;
+    public $ttl;
+    public $jenis_kelamin;
+    public $email;
+    public $no_hp;
+    public $province;
+    public $city;
+    public $district;
+    public $kode_pos;
 
     public function update()
     {

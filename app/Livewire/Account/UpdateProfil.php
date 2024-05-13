@@ -8,16 +8,16 @@ use Livewire\Component;
 class UpdateProfil extends Component
 {
     public UpdateProfilForm $form;
-    public string $nama_depan = '';
-    public string $nama_belakang = '';
-    public string $ttl = '';
-    public string $jenis_kelamin = '';
-    public string $email = '';
-    public string $no_hp = '';
-    public string $province = '';
-    public string $city = '';
-    public string $district = '';
-    public string $kode_pos = '';
+    public $nama_depan;
+    public $nama_belakang;
+    public $ttl;
+    public $jenis_kelamin;
+    public $email;
+    public $no_hp;
+    public $province;
+    public $city;
+    public $district;
+    public $kode_pos;
 
     public function mount(): void
     {
@@ -27,6 +27,12 @@ class UpdateProfil extends Component
         $this->form->nama_belakang = $user->last_name;
         $this->form->ttl = $user->date_of_birth;
         $this->form->jenis_kelamin = $user->jenis_kelamin;
+        if ($user->province == NULL) {
+            $this->form->jenis_kelamin = '';
+            $this->form->province = '';
+            $this->form->city = '';
+            $this->form->district = '';
+        }
         $this->form->email = $user->email;
         $this->form->no_hp = $user->phone_number;
         $this->form->province = $user->province;

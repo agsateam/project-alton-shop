@@ -86,11 +86,7 @@ document.addEventListener("livewire:navigated", () => {
             )
                 .then((response) => response.json())
                 .then((data) => {
-                    if (selectCityValue == null) {
-                        selectCity.innerHTML = `<option value="" selected disabled>Pilih Kota</option>`;
-                    } else {
-                        selectCity.innerHTML = `<option disabled>Pilih Kota</option>`;
-                    }
+                    selectCity.innerHTML = `<option value="" selected disabled>Pilih Kota</option>`;
                     data.forEach((item) => {
                         if (selectCityValue == item.name) {
                             selectCity.innerHTML += `<option value="${item.name}" id="${item.id}" selected>${item.name}</option>`;
@@ -120,11 +116,7 @@ document.addEventListener("livewire:navigated", () => {
             )
                 .then((response) => response.json())
                 .then((data) => {
-                    if (selectDistrictValue == null) {
-                        selectDistrict.innerHTML = `<option value="" selected disabled>Pilih Kecamatan</option>`;
-                    } else {
-                        selectDistrict.innerHTML = `<option disabled>Pilih Kecamatan</option>`;
-                    }
+                    selectDistrict.innerHTML = `<option value="" selected disabled>Pilih Kecamatan</option>`;
                     data.forEach((item) => {
                         if (selectDistrictValue == item.name) {
                             selectDistrict.innerHTML += `<option value="${item.name}" id="${item.id}" selected>${item.name}</option>`;

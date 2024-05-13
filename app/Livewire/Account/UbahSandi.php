@@ -7,6 +7,18 @@ use Livewire\Component;
 class UbahSandi extends Component
 {
     public UbahSandiForm $form;
+    public $sandi_lama;
+    public $pass;
+
+    public function mount()
+    {
+        $user = auth()->user();
+        if (!$user->password == NULL) {
+            $this->pass = true;
+        } else {
+            $this->pass = false;
+        }
+    }
 
     public function render()
     {
@@ -16,5 +28,10 @@ class UbahSandi extends Component
     public function update(): void
     {
         $this->form->update();
+    }
+
+    public function updateNew(): void
+    {
+        $this->form->updateNew();
     }
 }

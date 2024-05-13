@@ -43,7 +43,7 @@ new #[Layout('layouts.guest')] class extends Component
         <!-- Password -->
         <div class="mt-4">
             {{-- <x-input-label for="password" :value="__('Password')" /> --}}
-            <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full"
+            <x-text-input wire:model="form.password" click="togglePass()" hidden="password-icon-hidden" shown="password-icon-shown" id="password" class="block mt-1 w-full"
                 type="password"
                 name="password"
                 placeholder="Password"
@@ -79,3 +79,21 @@ new #[Layout('layouts.guest')] class extends Component
         Belum punya akun? <a href="register" class="text-primary font-bold hover:text-black" wire:navigate>Daftar</a>
     </div>
 </div>
+
+<script>
+    function togglePass() {
+        let passwordInput = document.getElementById('password');
+        let iconHidden = passwordInput.nextElementSibling.children[0];
+        let iconShown = passwordInput.nextElementSibling.children[1];
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            iconHidden.classList.add('hidden');
+            iconShown.classList.remove('hidden');
+        } else {
+            passwordInput.type = 'password';
+            iconHidden.classList.remove('hidden');
+            iconShown.classList.add('hidden');
+        }
+    }
+</script>

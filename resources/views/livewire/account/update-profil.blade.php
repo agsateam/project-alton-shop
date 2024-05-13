@@ -78,7 +78,7 @@
             </div> 
             <div>
                 <x-select-float-label name="form.city" label="Kota" id="city" value="{{ $this->form->city }}" class="w-full">
-                    <option value="" selected>Pilih Kota</option>
+                    <option value="{{ $this->form->city == '' ? '' : $this->form->city }}" selected>{{ $this->form->city == '' ? 'Pilih Kota' : $this->form->city }}</option>
                     <option disabled>Pilih provinsi lebih dulu.</option>
                 </x-select-float-label>
                 @error('form.city')
@@ -90,7 +90,7 @@
             </div> 
             <div>
                 <x-select-float-label name="form.district" label="Kecamatan" id="district" value="{{ $this->form->district }}" class="w-full">
-                    <option value="" selected>Pilih Kecamatan</option>
+                    <option value="{{ $this->form->district == '' ? '' : $this->form->district }}" selected>{{ $this->form->district == '' ? 'Pilih Kecamatan' : $this->form->district }}</option>
                     <option disabled>Pilih kota lebih dulu.</option>
                 </x-select-float-label>
                 @error('form.district')
@@ -128,8 +128,9 @@
         function getProvinces(){
             let selectProvince = document.querySelector("#province");
             let selectProvinceValue = selectProvince.getAttribute('value');
+            console.log(selectProvinceValue);
             selectProvince.innerHTML = `
-                <option selected disabled>Pilih Provinsi</option>
+                <option value="" selected disabled>Pilih Provinsi</option>
                 <option disabled>Loading ...</option>
             `;
 
@@ -138,11 +139,7 @@
                 .then((data) => {
                     console.log(data.length + " provinces loaded");
                     
-                    if(selectProvinceValue == null){
-                        selectProvince.innerHTML = `<option selected disabled>Pilih Provinsi</option>`;
-                    }else{
-                        selectProvince.innerHTML = `<option disabled>Pilih Provinsi</option>`;
-                    }
+                    selectProvince.innerHTML = `<option value="" selected disabled>Pilih Provinsi</option>`;
                     data.forEach(item => {
                         if(selectProvinceValue == item.name){
                             selectProvince.innerHTML += `<option value="${item.name}" id="${item.id}" selected>${item.name}</option>`;
@@ -153,7 +150,7 @@
                 })
                 .catch((error) => {
                     selectProvince.innerHTML = `
-                        <option selected disabled>Pilih Provinsi</option>
+                        <option value="" selected disabled>Pilih Provinsi</option>
                         <option disabled>Data tidak ditemukan, reload halaman!</option>
                     `;
                 });
