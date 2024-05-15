@@ -5,6 +5,13 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             <span>{{ session('pesan') }}</span>
         </div>
+        @elseif(session()->has('pesan-gagal'))
+        <div role="alert" class="alert alert-error text-white mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>              
+            <span>{{ session('pesan-gagal') }}</span>
+        </div>
         @endif
     </span>
     <form wire:submit="update" method="POST">
@@ -68,7 +75,12 @@
                 @enderror
             </div>
             <div>
-                <x-select-float-label name="form.province" label="Provinsi" id="province" value="{{ $this->form->province }}" class="w-full"/>
+                <x-select-float-label name="form.province" label="Provinsi" id="province" class="w-full">
+                    <option value="{{ $this->form->province == '' ? '' : $this->form->province }}" selected>{{ $this->form->province == '' ? 'Pilih Provinsi' : $this->form->province }}</option>
+                    @foreach ($prov as $p)
+                    <option value="{{ $p['name'] }}" id="{{ $p['id'] }}">{{ $p['name'] }}</option>
+                    @endforeach
+                </x-select-float-label>
                 @error('form.province')
                 <div class="text-red-500 text-xs w-full h-fit flex flex-row mt-1">
                     <span>{{ $message }}</span>
@@ -121,39 +133,4 @@
             <button type="submit" class="text-white bg-primary focus:ring-4 focus:outline-none focus:ring-primary font-medium text-xl w-full px-5 py-2.5 text-center">Simpan Perubahan</button>
         </div>
     </form>
-
-    <script>
-        getProvinces();
-        
-        function getProvinces(){
-            let selectProvince = document.querySelector("#province");
-            let selectProvinceValue = selectProvince.getAttribute('value');
-            console.log(selectProvinceValue);
-            selectProvince.innerHTML = `
-                <option value="" selected disabled>Pilih Provinsi</option>
-                <option disabled>Loading ...</option>
-            `;
-
-            fetch('https://vardrz.github.io/api-wilayah-indonesia/static/api/provinces.json')
-                .then(response => response.json())
-                .then((data) => {
-                    console.log(data.length + " provinces loaded");
-                    
-                    selectProvince.innerHTML = `<option value="" selected disabled>Pilih Provinsi</option>`;
-                    data.forEach(item => {
-                        if(selectProvinceValue == item.name){
-                            selectProvince.innerHTML += `<option value="${item.name}" id="${item.id}" selected>${item.name}</option>`;
-                        }else{
-                            selectProvince.innerHTML += `<option value="${item.name}" id="${item.id}" >${item.name}</option>`;
-                        }
-                    });
-                })
-                .catch((error) => {
-                    selectProvince.innerHTML = `
-                        <option value="" selected disabled>Pilih Provinsi</option>
-                        <option disabled>Data tidak ditemukan, reload halaman!</option>
-                    `;
-                });
-        }
-    </script>
 </div>
