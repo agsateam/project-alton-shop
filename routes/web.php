@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\TentangKamiController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -52,7 +53,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
 // Backend Admin
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
-    // Dashboard
+    // Dashboard    
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     // Master Data
     Route::prefix("data")->group(function () {
@@ -63,6 +64,13 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
             dd("Ini halaman naster data kategori");
         })->name('admin.data.kategori');
     });
+
+    //Web Konten
+    Route::prefix("webkonten")->group(function () {
+        Route::get('tentangkami', [TentangKamiController::class, 'index'])->name('admin.webkonten.tentangkami');
+    });
+
+    
 });
 
 
