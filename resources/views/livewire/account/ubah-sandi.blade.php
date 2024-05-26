@@ -21,7 +21,7 @@
     @endif
         @if($pass == true)
         <div class="mb-4 pt-2 px-3">
-            <x-input-float-label name="form.sandi_lama" type="password" label="Masukan Kata Sandi Lama" class="mb-1"/>
+            <x-input-float-label name="form.sandi_lama" type="password" click="toggleOldPass()" hidden="old-password-icon-hidden" shown="old-password-icon-shown" label="Masukan Kata Sandi Lama" class="mb-1"/>
             @error('form.sandi_lama')
             <div class="text-red-500 text-xs w-full h-fit flex flex-row mt-1">
                 <span>{{ $message }}</span>
@@ -32,7 +32,7 @@
         @endif
         <div class="grid gap-6 mb-4 md:grid-cols-2 pt-2 px-3">
             <div>
-                <x-input-float-label name="form.sandi_baru" type="password" label="Masukan Kata Sandi Baru" class="mb-1"/>
+                <x-input-float-label name="form.sandi_baru" type="password" click="toggleNewPass()" hidden="new-password-icon-hidden" shown="new-password-icon-shown" label="Masukan Kata Sandi Baru" class="mb-1"/>
                 @error('form.sandi_baru')
                 <div class="text-red-500 text-xs w-full h-fit flex flex-row mt-1">
                     <span>{{ $message }}</span>
@@ -41,7 +41,7 @@
                 @enderror
             </div>
             <div>
-                <x-input-float-label name="form.conf_sandi_baru" type="password" label="Konfirmasi Kata Sandi Baru" class="mb-1"/>
+                <x-input-float-label name="form.conf_sandi_baru" type="password" click="toggleConfPass()" hidden="conf-password-icon-hidden" shown="conf-password-icon-shown" label="Konfirmasi Kata Sandi Baru" class="mb-1"/>
                 @error('form.conf_sandi_baru')
                 <div class="text-red-500 text-xs w-full h-fit flex flex-row mt-1">
                     <span>{{ $message }}</span>
@@ -55,3 +55,50 @@
         </div>
     </form>
 </div>
+<script>
+    function toggleNewPass() {
+        let passwordInput = document.getElementById('form.sandi_baru');
+        let iconHidden = document.getElementById('new-password-icon-hidden');
+        let iconShown = document.getElementById('new-password-icon-shown');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            iconHidden.classList.add('hidden');
+            iconShown.classList.remove('hidden');
+        } else {
+            passwordInput.type = 'password';
+            iconHidden.classList.remove('hidden');
+            iconShown.classList.add('hidden');
+        }
+    }
+    function toggleConfPass() {
+        let passwordInput = document.getElementById('form.conf_sandi_baru');
+        let iconHidden = document.getElementById('conf-password-icon-hidden');
+        let iconShown = document.getElementById('conf-password-icon-shown');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            iconHidden.classList.add('hidden');
+            iconShown.classList.remove('hidden');
+        } else {
+            passwordInput.type = 'password';
+            iconHidden.classList.remove('hidden');
+            iconShown.classList.add('hidden');
+        }
+    }
+    function toggleOldPass() {
+        let passwordInput = document.getElementById('form.sandi_lama');
+        let iconHidden = document.getElementById('old-password-icon-hidden');
+        let iconShown = document.getElementById('old-password-icon-shown');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            iconHidden.classList.add('hidden');
+            iconShown.classList.remove('hidden');
+        } else {
+            passwordInput.type = 'password';
+            iconHidden.classList.remove('hidden');
+            iconShown.classList.add('hidden');
+        }
+    }
+</script>

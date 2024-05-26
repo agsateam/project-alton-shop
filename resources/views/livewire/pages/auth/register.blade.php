@@ -51,17 +51,15 @@ new #[Layout('layouts.guest')] class extends Component
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <div class="flex flex-row mt-4">
+        <div class="flex flex-row mt-4 gap-2">
             <!-- Password -->
             <x-text-input wire:model="password" click="togglePass()" hidden="password-icon-hidden" shown="password-icon-shown" id="password" class="block mt-1 w-full mr-2"
                             type="password"
-                            name="password"
                             placeholder="Password"
                             required autocomplete="new-password" />
             <!-- Confirm Password -->
             <x-text-input wire:model="password_confirmation" click="toggleConfirmPass()" hidden="confirm-password-icon-hidden" shown="confirm-password-icon-shown" id="password_confirmation" class="block mt-1 w-full"
                             type="password"
-                            name="password_confirmation"
                             placeholder="Confirm Password"
                             required autocomplete="new-password" />
         </div>
