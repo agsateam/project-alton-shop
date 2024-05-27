@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="container mt-4">
-            @livewire('pengguna.tambah')
+            @livewire('admin.pengguna.tambah')
         </div>
     </div>
 </x-admin-layout>

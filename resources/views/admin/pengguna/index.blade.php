@@ -62,7 +62,6 @@
                                     @foreach ($user->permissions->pluck('name') as $item)
                                         <span class="px-2 py-1 bg-green-200 text-green-800 rounded-full text-xs">{{ $item }}</span>
                                     @endforeach
-                                    {{-- <span class="px-2 py-1 bg-green-200 text-green-800 rounded-full text-xs">{{ $user->permissions->pluck('name')->join(', ') }}</span> --}}
                                 </td>
                                 <td class="px-6 py-4 flex items-center place-content-center space-x-2">
                                     <a href="{{ url('admin/pengguna/kelola-pengguna/edit/'.$user->id) }}" wire:navigate class="flex items-center space-x-2 font-medium text-white bg-blue-500 rounded-sm py-2 pl-2 pr-3">

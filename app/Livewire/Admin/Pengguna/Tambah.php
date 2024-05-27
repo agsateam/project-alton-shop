@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Pengguna;
+namespace App\Livewire\Admin\Pengguna;
 
 use Livewire\Component;
 
@@ -11,6 +11,6 @@ class Tambah extends Component
 
     public function render()
     {
-        return view('livewire.pengguna.tambah');
+        return view('livewire.admin.pengguna.tambah');
     }
 }

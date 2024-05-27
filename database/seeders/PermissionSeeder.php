@@ -56,6 +56,6 @@ class PermissionSeeder extends Seeder
         );
 
         $user = User::find(3);
-        $user->givePermissionTo('produk');
+        $user->givePermissionTo('produk', 'tambah produk', 'edit produk');
     }
 }
