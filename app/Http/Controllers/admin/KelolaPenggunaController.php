@@ -10,7 +10,10 @@ class KelolaPenggunaController extends Controller
 {
     public function index()
     {
-        $data = User::select('id', 'name', 'email')->paginate(2);
+        $data = User::select('id', 'name', 'email')->whereHas("roles", function ($q) {
+            $q->where("name", "admin");
+        })->with(['roles', 'permissions'])->paginate(2);
+
         return view('admin.pengguna.index', ['users' => $data]);
     }
 
