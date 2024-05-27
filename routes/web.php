@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\KelolaPenggunaController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -62,6 +63,16 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::get('kategori', function () {
             dd("Ini halaman naster data kategori");
         })->name('admin.data.kategori');
+    });
+    // Pengguna
+    Route::prefix("pengguna")->group(function () {
+        Route::get('kelola-pengguna', [KelolaPenggunaController::class, 'index'])->name('admin.pengguna.kelola-pengguna');
+        Route::get('kelola-pengguna/tambah', [KelolaPenggunaController::class, 'tambah'])->name('admin.pengguna.kelola-pengguna.tambah');
+        Route::get('kelola-pengguna/edit/{id}', [KelolaPenggunaController::class, 'edit'])->name('admin.pengguna.kelola-pengguna.edit');
+    });
+    // Web Content
+    Route::prefix("content")->group(function () {
+        Route::get('theme', [DashboardController::class, 'theme'])->name('admin.theme');
     });
 });
 
