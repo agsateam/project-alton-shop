@@ -33,7 +33,7 @@
             ['title' => 'Syarat & Ketentuan', 'link' => '#'],
             ['title' => 'FAQ', 'link' => '#'],
             ['title' => 'Banner', 'link' => '#'],
-            ['title' => 'Warna Tema', 'link' => '#'],
+            ['title' => 'Warna Tema', 'link' => 'admin/content/theme'],
           ]
         ],
        [

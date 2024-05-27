@@ -70,6 +70,10 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::get('kelola-pengguna/tambah', [KelolaPenggunaController::class, 'tambah'])->name('admin.pengguna.kelola-pengguna.tambah');
         Route::get('kelola-pengguna/edit/{id}', [KelolaPenggunaController::class, 'edit'])->name('admin.pengguna.kelola-pengguna.edit');
     });
+    // Web Content
+    Route::prefix("content")->group(function () {
+        Route::get('theme', [DashboardController::class, 'theme'])->name('admin.theme');
+    });
 });
 
 
