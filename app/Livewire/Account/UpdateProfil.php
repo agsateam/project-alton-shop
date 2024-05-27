@@ -3,6 +3,7 @@
 namespace App\Livewire\Account;
 
 use App\Livewire\Account\UpdateProfilForm;
+use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
 class UpdateProfil extends Component
@@ -18,10 +19,13 @@ class UpdateProfil extends Component
     public $city;
     public $district;
     public $kode_pos;
+    public $prov;
 
     public function mount(): void
     {
-        $user = auth()->user();
+        $user           = auth()->user();
+        $api_province   = http::get('https://vardrz.github.io/api-wilayah-indonesia/static/api/provinces.json');
+        $this->prov     = $api_province->json();
 
         $this->form->nama_depan = $user->name;
         $this->form->nama_belakang = $user->last_name;

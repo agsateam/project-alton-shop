@@ -11,7 +11,7 @@ class UpdateProfilForm extends Form
     #[Rule(
         [
             'nama_depan'    => 'required|max:255',
-            'nama_belakang' => 'required|max:255',
+            'nama_belakang' => 'max:255',
             'ttl'           => 'required|date',
             'jenis_kelamin' => 'required',
             'email'         => 'required|email|max:255',
@@ -24,7 +24,6 @@ class UpdateProfilForm extends Form
         message: [
             'nama_depan.required'   => 'Nama depan tidak boleh kosong',
             'nama_depan.max'        => 'Nama depan terlalu panjang',
-            'nama_belakang.required' => 'Nama belakang tidak boleh kosong',
             'nama_belakang.max'     => 'Nama belakang terlalu panjang',
             'ttl.required'          => 'Tanggal lahir tidak boleh kosong',
             'ttl.date'              => 'Tanggal lahir harus berupa tanggal',
