@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
 class KelolaPenggunaController extends Controller
 {
@@ -19,7 +20,8 @@ class KelolaPenggunaController extends Controller
 
     public function tambah()
     {
-        return view('admin.pengguna.tambah');
+        $data = Permission::all();
+        return view('admin.pengguna.tambah', ['permissions' => $data]);
     }
 
     public function edit($id)

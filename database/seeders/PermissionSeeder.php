@@ -15,47 +15,64 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        $RoleUser = Role::updateOrCreate(
+        $permissions = [
+            'lihat produk',
+            'tambah produk',
+            'edit produk',
+            'hapus produk',
+            'lihat kategori',
+            'tambah kategori',
+            'edit kategori',
+            'hapus kategori',
+            'lihat transaksi',
+            'tambah transaksi',
+            'edit transaksi',
+            'hapus transaksi',
+            'lihat tentang kami',
+            'tambah tentang kami',
+            'edit tentang kami',
+            'hapus tentang kami',
+            'lihat kebijakan privasi',
+            'tambah kebijakan privasi',
+            'edit kebijakan privasi',
+            'hapus kebijakan privasi',
+            'lihat syarat dan ketentuan',
+            'tambah syarat dan ketentuan',
+            'edit syarat dan ketentuan',
+            'hapus syarat dan ketentuan',
+            'lihat faq',
+            'tambah faq',
+            'edit faq',
+            'hapus faq',
+            'lihat banner',
+            'tambah banner',
+            'edit banner',
+            'hapus banner',
+            'lihat warna tema',
+            'tambah warna tema',
+            'edit warna tema',
+            'hapus warna tema',
+            'lihat kelola pengguna',
+            'tambah pengguna',
+            'edit pengguna',
+            'hapus pengguna',
+        ];
+
+        Role::updateOrCreate(
             ['name' => 'user'],
             ['name' => 'user']
         );
 
-        $RoleAdmin = Role::updateOrCreate(
+        Role::updateOrCreate(
             ['name' => 'admin'],
             ['name' => 'admin']
         );
 
-        $Permission = Permission::updateOrCreate(
-            ['name' => 'profile'],
-            ['name' => 'profile']
-        );
-
-        $Permission2 = Permission::updateOrCreate(
-            ['name' => 'tambah profile'],
-            ['name' => 'tambah profile']
-        );
-
-        $Permission3 = Permission::updateOrCreate(
-            ['name' => 'edit profile'],
-            ['name' => 'edit profile']
-        );
-
-        $Permission4 = Permission::updateOrCreate(
-            ['name' => 'produk'],
-            ['name' => 'produk'],
-        );
-
-        Permission::updateOrCreate(
-            ['name' => 'tambah produk'],
-            ['name' => 'tambah produk'],
-        );
-
-        Permission::updateOrCreate(
-            ['name' => 'edit produk'],
-            ['name' => 'edit produk'],
-        );
-
-        $user = User::find(3);
-        $user->givePermissionTo('produk', 'tambah produk', 'edit produk');
+        foreach ($permissions as $item) {
+            Permission::updateOrCreate(
+                ['name' => $item],
+                ['name' => $item]
+            );
+        }
     }
 }

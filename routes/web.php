@@ -68,6 +68,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::prefix("pengguna")->group(function () {
         Route::get('kelola-pengguna', [KelolaPenggunaController::class, 'index'])->name('admin.pengguna.kelola-pengguna');
         Route::get('kelola-pengguna/tambah', [KelolaPenggunaController::class, 'tambah'])->name('admin.pengguna.kelola-pengguna.tambah');
+        Route::get('kelola-pengguna/tambah/simpan', [KelolaPenggunaController::class, 'simpan'])->name('admin.pengguna.kelola-pengguna.tambah.simpan');
         Route::get('kelola-pengguna/edit/{id}', [KelolaPenggunaController::class, 'edit'])->name('admin.pengguna.kelola-pengguna.edit');
     });
 });

@@ -6,7 +6,6 @@ use Livewire\Component;
 
 class Edit extends Component
 {
-    public PenggunaForm $form;
     public $user;
     public $name;
     public $email;
@@ -15,8 +14,8 @@ class Edit extends Component
 
     public function mount()
     {
-        $this->form->name = $this->user->name;
-        $this->form->email = $this->user->email;
+        $this->name = $this->user->name;
+        $this->email = $this->user->email;
         // $this->role = $this->user->role;
         // $this->hak_akses = $this->user->hak_akses;
     }

@@ -9,6 +9,12 @@ class PenggunaForm extends Form
 {
     public $name;
     public $email;
-    public $role;
-    public $hak_akses;
+    public $password;
+    public $conf_password;
+    public $checkbox_hak_akses = [];
+
+    public function simpan()
+    {
+        dd($this->name, $this->email, $this->password, $this->conf_password, $this->checkbox_hak_akses);
+    }
 }
