@@ -17,4 +17,9 @@ class PenggunaForm extends Form
     {
         dd($this->name, $this->email, $this->password, $this->conf_password, $this->checkbox_hak_akses);
     }
+
+    public function update()
+    {
+        dd($this->name, $this->email, $this->password, $this->conf_password, $this->checkbox_hak_akses);
+    }
 }

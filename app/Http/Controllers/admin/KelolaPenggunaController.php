@@ -26,7 +26,16 @@ class KelolaPenggunaController extends Controller
 
     public function edit($id)
     {
-        $data = User::select('id', 'name', 'email')->find($id);
-        return view('admin.pengguna.edit', ['user' => $data]);
+        $data = permission::findById($id);
+        // dd($data);
+        return view('admin.pengguna.edit', ['permissions' => $data]);
+    }
+
+    public function delete($id)
+    {
+        $data = permission::findById($id);
+        // $data->delete();
+        session()->flash('hapus', 'Data berhasil dihapus');
+        return redirect()->to(url('admin/pengguna/kelola-pengguna'));
     }
 }

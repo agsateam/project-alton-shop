@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="container mt-4">
-            @livewire('admin.pengguna.edit', ['user' => $user])
+            @livewire('admin.pengguna.edit', ['permissions' => $permissions])
         </div>
     </div>
 </x-admin-layout>
