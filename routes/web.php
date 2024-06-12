@@ -10,6 +10,7 @@ use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\admin\AdminProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\KelolaPenggunaController;
@@ -57,9 +58,10 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     // Master Data
     Route::prefix("data")->group(function () {
-        Route::get('produk', function () {
-            dd("Ini halaman naster data produk");
-        })->name('admin.data.produk');
+        // product
+        Route::get('product', [AdminProductController::class, 'index'])->name('admin.data.product');
+        Route::get('product/tambah', [AdminProductController::class, 'tambah'])->name('admin.data.product.tambah');
+        // kategori
         Route::get('kategori', function () {
             dd("Ini halaman naster data kategori");
         })->name('admin.data.kategori');
